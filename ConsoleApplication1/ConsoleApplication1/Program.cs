@@ -83,16 +83,12 @@ namespace ConsoleApplication1
             
         }
     }
-
-
-
-
+    
     class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Write matrix quantity");
-            //Matrix[][][] a= new Matrix[Console.ReadLine()];
+            Console.WriteLine("Write matrix quantity"); 
             int k = int.Parse(Console.ReadLine());
             Console.WriteLine("Write matrix row quantity");
             int m = int.Parse(Console.ReadLine());
@@ -103,14 +99,9 @@ namespace ConsoleApplication1
             {
                 Matr[i] = new double[m, n];
             }
-            /*double[,] x= new double[m,n];
-            double[] Matr = new x[k];*/
-            //Matrix a = new Matrix();
             for (int i=0;i<Matr.Length;++i){
                 Matrix.rand(ref Matr[i]);
-            }
-             //       rand(ref a[i]); }
-            
+            }            
             double[,] temp= new double[m,n];
             Array.Copy(Matr[0], temp, Matr[0].Length);
             var StartTime=DateTime.Now;//????????????????????????Или лучше Stopwatch?
@@ -129,12 +120,12 @@ namespace ConsoleApplication1
                     JagMatr[i][j]= new double[Matr[0].GetLength(1)];
                 }
             }
-
             
             for (int i=0;i<JagMatr.GetLength(0);++i){
                 JagMatr[i]=Matrix.UsualToJagMatrix(Matr[i]);
             }
-            
+
+            //Умножение ступенчатых матриц
             double[][] Temp = new double[Matr[0].GetLength(0)][];
             for (int i=0;i<Matr[0].GetLength(0);++i){
                 Temp[i]=new double[Matr[0].GetLength(1)];
