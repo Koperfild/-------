@@ -68,7 +68,7 @@ namespace ConsoleApplication1
                     c[i][j] = a[i, j];
                 }
             }
-            return c;//?????????????????????????????????Тип double[][] отличается от double[,] ?И тот и тот можно передать в Multiply?
+            return c;
         }
         //jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj
         public static void rand(ref double[,] a)
@@ -112,19 +112,21 @@ namespace ConsoleApplication1
              //       rand(ref a[i]); }
             
             double[,] temp= new double[m,n];
-            Array.Copy(Matr[0], temp, Matr[0].Length);//????????????????Можно последнее что-то типа a.GetLength() ?
+            Array.Copy(Matr[0], temp, Matr[0].Length);
             var StartTime=DateTime.Now;//????????????????????????Или лучше Stopwatch?
-            for (int i=1;i<Matr.Length;++i){//Умножение матриц
+            
+            //Умножение матриц
+            for (int i=1;i<Matr.Length;++i){
                 temp=Matrix.Multiply(temp,Matr[i]);
             }
             Console.WriteLine(DateTime.Now-StartTime+"\n");
 
             // Ступенчатые матрицы
             double[][][] JagMatr= new double[Matr.Length][][];
-            for (int i=0;i<JagMatr.GetLength(0);++i){
+            for (int i=0;i<JagMatr.Length;++i){
                 JagMatr[i] = new double[Matr[0].GetLength(0)][];
-                for (int m=0;m<Matr[0].GetLength(0);++m){//почему не даёт объявить int m=0
-                    JagMatr[i][m]= new double[Matr[0].GetLength(1)];
+                for (int j=0;j<Matr[0].GetLength(0);++j){//почему не даёт объявить int m=0
+                    JagMatr[i][j]= new double[Matr[0].GetLength(1)];
                 }
             }
 
@@ -132,18 +134,21 @@ namespace ConsoleApplication1
             for (int i=0;i<JagMatr.GetLength(0);++i){
                 JagMatr[i]=Matrix.UsualToJagMatrix(Matr[i]);
             }
-            double[][] Temp = new double[a.GetLength(0)];
-            for (int i=0;i<A.GetLength(0);++i){
-                Temp[i]=new double[a.GetLength(1)];
+            
+            double[][] Temp = new double[Matr[0].GetLength(0)][];
+            for (int i=0;i<Matr[0].GetLength(0);++i){
+                Temp[i]=new double[Matr[0].GetLength(1)];
             }
-            Array.Copy(A[0],Temp,A.GetLength(0)*A.GetLength(1));
+            Array.Copy(JagMatr[0],Temp,Matr[0].Length);//Почему тут уже temp отличается от Matr[0]???//Тут можно просто Matr.Length??
             StartTime=DateTime.Now;
-            for (int i=1;i<A.GetLength;++i){
-                Temp=Matrix.Multiply(Temp,A[i]);//Тут по идее можно допилить Multiply по кол-ву строк 1-ой и кол-ву столбцов последней м-цы и можно умножать любую последовательность подходящих матриц а не только одинаковые.
+
+            //Умножение матриц
+            for (int i=1;i<JagMatr.Length;++i){
+                Temp=Matrix.Multiply(Temp,JagMatr[i]);//Тут по идее можно допилить Multiply по кол-ву строк 1-ой и кол-ву столбцов последней м-цы и можно умножать любую последовательность подходящих матриц а не только одинаковые.
             }
             Console.WriteLine(DateTime.Now-StartTime+"\n");
             Console.ReadLine();
-            return 0;
+            return;
         }
     }
 }
