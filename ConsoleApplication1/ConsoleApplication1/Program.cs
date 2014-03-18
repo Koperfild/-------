@@ -97,25 +97,24 @@ namespace ConsoleApplication1
             Console.WriteLine("Write matrix column quantity");
             int n = int.Parse(Console.ReadLine());
             double[][,] Matr = new double[k][,];
-            /*for (int i = 0; i < Matr.Length; ++i)
-            {
-                Matr[i] = new double[m, n];
-            }*/
+           
+            //Рандом матриц
             for (int i=0;i<Matr.Length;++i){
                 Matr[i] = new double[m, n];
                 Matrix.rand(ref Matr[i]);
-            }            
+            }
+
+            //Умножение матриц с засечением времени
             double[,] temp= new double[m,n];
             Array.Copy(Matr[0], temp, Matr[0].Length);
             var StartTime=DateTime.Now;//????????????????????????Или лучше Stopwatch?
-            
-            //Умножение матриц
+                        
             for (int i=1;i<Matr.Length;++i){
                 temp=Matrix.Multiply(temp,Matr[i]);
             }
             Console.WriteLine(DateTime.Now-StartTime+"\n");
 
-            // Ступенчатые матрицы
+            //Матрицы в Ступенчатые матрицы
             double[][][] JagMatr= new double[Matr.Length][][];
             
             for (int i = 0; i < Matr.Length; ++i)
@@ -123,7 +122,7 @@ namespace ConsoleApplication1
                 JagMatr[i] = Matrix.UsualToJagMatrix(Matr[i]);
             }
             
-            //Умножение ступенчатых матриц
+            //Умножение ступенчатых матриц с засечением времени
             double[][] Temp = new double[Matr[0].GetLength(0)][];
             for (int i=0;i<Matr[0].GetLength(0);++i){
                 Temp[i]=new double[Matr[0].GetLength(1)];
@@ -136,10 +135,10 @@ namespace ConsoleApplication1
                     Array.Copy(JagMatr[i][j], Temp[j], JagMatr[i][j].Length);
                 }
             }
-            //Почему тут уже temp отличается от Matr[0]???
+            
             StartTime=DateTime.Now;
 
-            //Умножение матриц
+            //Само умножение в подготовленную матрицу Temp
             for (int i=1;i<JagMatr.Length;++i){
                 Temp=Matrix.Multiply(Temp,JagMatr[i]);//Тут по идее можно допилить Multiply по кол-ву строк 1-ой и кол-ву столбцов последней м-цы и можно умножать любую последовательность подходящих матриц а не только одинаковые.
             }
