@@ -58,12 +58,13 @@ namespace ConsoleApplication1
         public static double[][] UsualToJagMatrix(double[,] a)
         {
             double[][] c = new double[a.GetLength(0)][];
+            /*for (int i = 0; i < a.GetLength(0); ++i)
+            {
+                c[i] = new double[a.GetLength(1)];
+            }*/
             for (int i = 0; i < a.GetLength(0); ++i)
             {
                 c[i] = new double[a.GetLength(1)];
-            }
-            for (int i = 0; i < a.GetLength(0); ++i)
-            {
                 for (int j = 0; j < a.GetLength(1); ++j)
                 {
                     c[i][j] = a[i, j];
@@ -96,11 +97,12 @@ namespace ConsoleApplication1
             Console.WriteLine("Write matrix column quantity");
             int n = int.Parse(Console.ReadLine());
             double[][,] Matr = new double[k][,];
-            for (int i = 0; i < Matr.Length; ++i)
+            /*for (int i = 0; i < Matr.Length; ++i)
             {
                 Matr[i] = new double[m, n];
-            }
+            }*/
             for (int i=0;i<Matr.Length;++i){
+                Matr[i] = new double[m, n];
                 Matrix.rand(ref Matr[i]);
             }            
             double[,] temp= new double[m,n];
@@ -131,7 +133,7 @@ namespace ConsoleApplication1
             for (int i=0;i<Matr[0].GetLength(0);++i){
                 Temp[i]=new double[Matr[0].GetLength(1)];
             }
-            Console.WriteLine("JagMatr[0] Length is {0}\nTemp Length is {1}", JagMatr[0].Length, Temp.Length);
+            //Console.WriteLine("JagMatr[0] Length is {0}\nTemp Length is {1}", JagMatr[0].Length, Temp.Length);
             for (int i = 0; i < JagMatr[0].Length; ++i)
             {
                 for (int j = 0; j < JagMatr[0][i].Length; ++j)
@@ -139,7 +141,7 @@ namespace ConsoleApplication1
                     Array.Copy(JagMatr[i][j], Temp[j], JagMatr[i][j].Length);
                 }
             }
-            //Array.Copy(JagMatr[0],Temp,13/*Matr[0].Length*/);//Почему тут уже temp отличается от Matr[0]???//Тут можно просто Matr.Length??
+            //Почему тут уже temp отличается от Matr[0]???
             StartTime=DateTime.Now;
 
             //Умножение матриц
