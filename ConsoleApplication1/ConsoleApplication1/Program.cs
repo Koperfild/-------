@@ -117,27 +117,12 @@ namespace ConsoleApplication1
 
             // Ступенчатые матрицы
             double[][][] JagMatr= new double[Matr.Length][][];
-            /*for (int i=0;i<JagMatr.Length;++i){
-                JagMatr[i] = new double[Matr[0].GetLength(0)][];
-                for (int j=0;j<Matr[0].GetLength(0);++j){//почему не даёт объявить int m=0
-                    JagMatr[i][j]= new double[Matr[0].GetLength(1)];
-                }
-            }*/
-
+            
             for (int i = 0; i < Matr.Length; ++i)
             {
-                JagMatr[i]= new double[Matr[0].GetLength(0)][];
-                for (int j = 0; j < Matr[0].GetLength(0); ++j)
-                {
-                    JagMatr[i][j] = new double[Matr[0].GetLength(1)];
-                }
                 JagMatr[i] = Matrix.UsualToJagMatrix(Matr[i]);
             }
-            /*for (int i=0;i<JagMatr.GetLength(0);++i){
-
-                JagMatr[i]=Matrix.UsualToJagMatrix(Matr[i]);
-            }*/
-
+            
             //Умножение ступенчатых матриц
             double[][] Temp = new double[Matr[0].GetLength(0)][];
             for (int i=0;i<Matr[0].GetLength(0);++i){
