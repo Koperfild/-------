@@ -36,12 +36,13 @@ namespace ConsoleApplication1
                 Environment.Exit(-1);                
             }
             double[][] c = new double[a.Length][];
-            for (int i = 0; i < a.Length; ++i)
+            /*for (int i = 0; i < a.Length; ++i)
             {
-                a[i] = new double[b.Length];
-            }
-            for (int i = 0; i < a[i].Length; ++i)
+                c[i] = new double[b.Length];
+            }*/
+            for (int i = 0; i < a[0].Length; ++i)
             {
+                c[i] = new double[b.Length];
                 for (int k = 0; k < b[0].Length; ++k)
                 {
                     for (int j = 0; j < b.Length; ++j)
@@ -130,7 +131,15 @@ namespace ConsoleApplication1
             for (int i=0;i<Matr[0].GetLength(0);++i){
                 Temp[i]=new double[Matr[0].GetLength(1)];
             }
-            Array.Copy(JagMatr[0],Temp,Matr[0].Length);//Почему тут уже temp отличается от Matr[0]???//Тут можно просто Matr.Length??
+            Console.WriteLine("JagMatr[0] Length is {0}\nTemp Length is {1}", JagMatr[0].Length, Temp.Length);
+            for (int i = 0; i < JagMatr[0].Length; ++i)
+            {
+                for (int j = 0; j < JagMatr[0][i].Length; ++j)
+                {
+                    Array.Copy(JagMatr[i][j], Temp[j], JagMatr[i][j].Length);
+                }
+            }
+            //Array.Copy(JagMatr[0],Temp,13/*Matr[0].Length*/);//Почему тут уже temp отличается от Matr[0]???//Тут можно просто Matr.Length??
             StartTime=DateTime.Now;
 
             //Умножение матриц
