@@ -126,7 +126,7 @@ namespace ConsoleApplication1
             double[][] Temp = new double[JagMatr[0].Length][];
             //Console.WriteLine("JagMatr[0] Length is {0}\nTemp Length is {1}", JagMatr[0].Length, Temp.Length);
             
-            for (int j = 0; j < JagMatr[0][j].Length; ++j)
+            for (int j = 0; j < JagMatr[0][0].Length; ++j)
             {
                 Temp[j]=new double[JagMatr[0][j].Length];
                 Array.Copy(JagMatr[0][j], Temp[j], JagMatr[0][j].Length);
