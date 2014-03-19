@@ -72,7 +72,7 @@ namespace ConsoleApplication1
         public static void rand(ref double[,] a)
         {
             Random rand1 = new Random();
-            for (int i=0;i<a.GetLength(0);++i){
+            for (int i=0; i<a.GetLength(0); ++i){
                 for (int j = 0; j < a.GetLength(1); ++j)
                 {
                     a[i, j] = rand1.NextDouble();
@@ -95,18 +95,18 @@ namespace ConsoleApplication1
             double[][,] Matr = new double[k][,];
            
             //Рандом матриц
-            for (int i=0;i<Matr.Length;++i){
+            for (int i = 0; i < Matr.Length; ++i){
                 Matr[i] = new double[m, n];
                 Matrix.rand(ref Matr[i]);
             }
 
             //Умножение матриц с засечением времени
-            double[,] temp= new double[m,n];
+            double[,] temp= new double[m, n];
             Array.Copy(Matr[0], temp, Matr[0].Length);
             var StartTime=DateTime.Now;//????????????????????????Или лучше Stopwatch?
                         
-            for (int i=1;i<Matr.Length;++i){
-                temp=Matrix.Multiply(temp,Matr[i]);
+            for (int i = 1; i < Matr.Length; ++i){
+                temp = Matrix.Multiply(temp, Matr[i]);
             }
             Console.WriteLine(DateTime.Now-StartTime+"\n");
 
@@ -129,8 +129,8 @@ namespace ConsoleApplication1
                       
             StartTime=DateTime.Now;
 
-            for (int i=1;i<JagMatr.Length;++i){
-                Temp=Matrix.Multiply(Temp,JagMatr[i]);
+            for (int i = 1; i < JagMatr.Length; ++i){
+                Temp = Matrix.Multiply(Temp,JagMatr[i]);
             }
             Console.WriteLine(DateTime.Now-StartTime+"\n");
             Console.ReadLine();
