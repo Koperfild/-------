@@ -130,11 +130,9 @@ namespace ConsoleApplication1
                 Temp[j]=new double[JagMatr[0][j].Length];
                 Array.Copy(JagMatr[0][j], Temp[j], JagMatr[0][j].Length);
             }
-            
-            
+                      
             StartTime=DateTime.Now;
 
-            //Само умножение в подготовленную матрицу Temp
             for (int i=1;i<JagMatr.Length;++i){
                 Temp=Matrix.Multiply(Temp,JagMatr[i]);
             }
