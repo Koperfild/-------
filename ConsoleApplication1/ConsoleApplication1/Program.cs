@@ -58,10 +58,6 @@ namespace ConsoleApplication1
         public static double[][] UsualToJagMatrix(double[,] a)
         {
             double[][] c = new double[a.GetLength(0)][];
-            /*for (int i = 0; i < a.GetLength(0); ++i)
-            {
-                c[i] = new double[a.GetLength(1)];
-            }*/
             for (int i = 0; i < a.GetLength(0); ++i)
             {
                 c[i] = new double[a.GetLength(1)];
