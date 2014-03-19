@@ -124,7 +124,6 @@ namespace ConsoleApplication1
             
             //Умножение ступенчатых матриц с засечением времени
             double[][] Temp = new double[JagMatr[0].Length][];
-            //Console.WriteLine("JagMatr[0] Length is {0}\nTemp Length is {1}", JagMatr[0].Length, Temp.Length);
             
             for (int j = 0; j < JagMatr[0][0].Length; ++j)
             {
@@ -137,7 +136,7 @@ namespace ConsoleApplication1
 
             //Само умножение в подготовленную матрицу Temp
             for (int i=1;i<JagMatr.Length;++i){
-                Temp=Matrix.Multiply(Temp,JagMatr[i]);//Тут по идее можно допилить Multiply по кол-ву строк 1-ой и кол-ву столбцов последней м-цы и можно умножать любую последовательность подходящих матриц а не только одинаковые.
+                Temp=Matrix.Multiply(Temp,JagMatr[i]);
             }
             Console.WriteLine(DateTime.Now-StartTime+"\n");
             Console.ReadLine();
