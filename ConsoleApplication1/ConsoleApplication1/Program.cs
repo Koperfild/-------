@@ -124,7 +124,7 @@ namespace ConsoleApplication1
             for (int j = 0; j < JagMatr[0][0].Length; ++j)
             {
                 Temp[j]=new double[JagMatr[0][j].Length];
-                Array.Copy(JagMatr[0][j], Temp[j], JagMatr[0][j].Length);
+                JagMatr[0][j].CopyTo(Temp[j], 0);
             }
                       
             StartTime=DateTime.Now;
