@@ -123,18 +123,15 @@ namespace ConsoleApplication1
             }
             
             //Умножение ступенчатых матриц с засечением времени
-            double[][] Temp = new double[Matr[0].GetLength(0)][];
-            for (int i=0;i<Matr[0].GetLength(0);++i){
-                Temp[i]=new double[Matr[0].GetLength(1)];
-            }
+            double[][] Temp = new double[JagMatr[0].Length][];
             //Console.WriteLine("JagMatr[0] Length is {0}\nTemp Length is {1}", JagMatr[0].Length, Temp.Length);
-            for (int i = 0; i < JagMatr[0].Length; ++i)
+            
+            for (int j = 0; j < JagMatr[0][j].Length; ++j)
             {
-                for (int j = 0; j < JagMatr[0][i].Length; ++j)
-                {
-                    Array.Copy(JagMatr[i][j], Temp[j], JagMatr[i][j].Length);
-                }
+                Temp[j]=new double[JagMatr[0][j].Length];
+                Array.Copy(JagMatr[0][j], Temp[j], JagMatr[0][j].Length);
             }
+            
             
             StartTime=DateTime.Now;
 
@@ -152,4 +149,3 @@ namespace ConsoleApplication1
 /*Пользователь вводит с клавиатуры количество матриц и их размер. Создать матрицы и заполнить их случайными числами. Перемножить. 
 Также создать ступенчатые массивы на основе этих матриц и также перемножить их. Вывести на консоль время, затраченное на умножение
  в первом и во втором случае. Реализовать для каждого достаточно большого действия отдельный метод.*/
-
