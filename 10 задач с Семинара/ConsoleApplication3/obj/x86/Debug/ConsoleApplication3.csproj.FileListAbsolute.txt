@@ -1,0 +1,10 @@
+H:\Информатика\ООП\ConsoleApplication3\ConsoleApplication3\obj\x86\Debug\ResolveAssemblyReference.cache
+H:\Информатика\ООП\ConsoleApplication3\ConsoleApplication3\bin\Debug\ConsoleApplication3.exe
+H:\Информатика\ООП\ConsoleApplication3\ConsoleApplication3\bin\Debug\ConsoleApplication3.pdb
+H:\Информатика\ООП\ConsoleApplication3\ConsoleApplication3\obj\x86\Debug\ConsoleApplication3.exe
+H:\Информатика\ООП\ConsoleApplication3\ConsoleApplication3\obj\x86\Debug\ConsoleApplication3.pdb
+H:\Информатика\ООП\10 задач с Семинара\ConsoleApplication3\obj\x86\Debug\ConsoleApplication3.exe
+H:\Информатика\ООП\10 задач с Семинара\ConsoleApplication3\obj\x86\Debug\ConsoleApplication3.pdb
+H:\Информатика\ООП\10 задач с Семинара\ConsoleApplication3\bin\Debug\ConsoleApplication3.exe
+H:\Информатика\ООП\10 задач с Семинара\ConsoleApplication3\bin\Debug\ConsoleApplication3.pdb
+H:\Информатика\ООП\10 задач с Семинара\ConsoleApplication3\obj\x86\Debug\ResolveAssemblyReference.cache
