@@ -20,14 +20,14 @@ namespace Наследование
     }
     public class ConvertibleCar : Car
     {
-        public new void ShowDetails()
+        public new virtual void ShowDetails()
         {
             System.Console.WriteLine("A roof that opens up.");
         }
     }
     public class Car2: ConvertibleCar
     {
-        public override void ShowDetails
+        public override void ShowDetails()
         {
             
             Console.WriteLine("car 2");
