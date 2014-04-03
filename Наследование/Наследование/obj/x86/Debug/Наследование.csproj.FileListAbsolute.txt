@@ -1,0 +1,5 @@
+C:\Users\Женя\Documents\GitHub\-------\Наследование\Наследование\bin\Debug\Наследование.exe
+C:\Users\Женя\Documents\GitHub\-------\Наследование\Наследование\bin\Debug\Наследование.pdb
+C:\Users\Женя\Documents\GitHub\-------\Наследование\Наследование\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Женя\Documents\GitHub\-------\Наследование\Наследование\obj\x86\Debug\Наследование.exe
+C:\Users\Женя\Documents\GitHub\-------\Наследование\Наследование\obj\x86\Debug\Наследование.pdb
