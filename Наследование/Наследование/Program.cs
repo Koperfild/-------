@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Наследование
 {
-    class Car
+    public class Car
     {
         public void DescribeCar()
         {
@@ -18,11 +18,19 @@ namespace Наследование
             System.Console.WriteLine("Standard transportation.");
         }
     }
-    class ConvertibleCar : Car
+    public class ConvertibleCar : Car
     {
         public new void ShowDetails()
         {
             System.Console.WriteLine("A roof that opens up.");
+        }
+    }
+    public class Car2: ConvertibleCar
+    {
+        public override void ShowDetails
+        {
+            
+            Console.WriteLine("car 2");
         }
     }
   
@@ -30,9 +38,11 @@ namespace Наследование
     {
         static void Main(string[] args)
         {
-            ConvertibleCar car2 = new ConvertibleCar();
-            car2.DescribeCar();
+            ConvertibleCar car = new ConvertibleCar();
+            car.DescribeCar();
             System.Console.WriteLine("----------");
+            car.ShowDetails();
+            Car2 car2 = new Car2();
             car2.ShowDetails();
             Console.ReadLine();
         }
