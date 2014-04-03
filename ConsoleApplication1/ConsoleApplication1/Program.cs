@@ -75,10 +75,22 @@ namespace ConsoleApplication1
             for (int i=0; i<a.GetLength(0); ++i){
                 for (int j = 0; j < a.GetLength(1); ++j)
                 {
-                    a[i, j] = rand1.NextDouble();
+                    a[i, j] = rand1.Next(-15,16);
+                    //Console.Write("{0:0}",(int)a[i, j]);
                 }
+                //Console.WriteLine();
             }
             
+        }
+
+        public void ArrayPrint(ref int[] arr)
+        {
+            Console.WriteLine("Исходный массив");
+            for (int i = 0; i < arr.Length; ++i)
+            {
+                Console.Write(arr[i] + " ");
+            }
+            Console.WriteLine();
         }
     }
     
@@ -94,6 +106,7 @@ namespace ConsoleApplication1
             int n = int.Parse(Console.ReadLine());
             double[][,] Matr = new double[k][,];
            
+            
             //Рандом матриц
             for (int i = 0; i < Matr.Length; ++i){
                 Matr[i] = new double[m, n];
