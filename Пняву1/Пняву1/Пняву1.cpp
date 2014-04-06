@@ -201,7 +201,7 @@ char *NameCheck(char *Title,void (*skip)(),...){// возвращает указатель на введё
 	char c[M];//Строка для хранения названия
 	char *p = Title+sizeof(Title)+sizeof(skip);//Указатель на следующий после *Title в строке параметров функции NameCheck
 	//p += sizeof(Title);
-	int (*fp)(char *c) = (int (*))p;//указатель на функцию. Можно без p написать int(*fp)(char *c) = (int)(Title+sizeof(Title));
+	int (*fp)(char *c) = (int)p;//указатель на функцию. Можно без p написать int(*fp)(char *c) = (int)(Title+sizeof(Title));
 	int flag1 = 1;
 	while (!flag1){	
 		skip();//Пропуск пробелов до слова.
