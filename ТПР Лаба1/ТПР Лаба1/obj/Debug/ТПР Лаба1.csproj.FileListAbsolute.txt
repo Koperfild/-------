@@ -1,0 +1,12 @@
+c:\users\женя\documents\visual studio 2013\Projects\ТПР Лаба1\ТПР Лаба1\bin\Debug\ТПР Лаба1.exe.config
+c:\users\женя\documents\visual studio 2013\Projects\ТПР Лаба1\ТПР Лаба1\obj\Debug\ТПР Лаба1.csprojResolveAssemblyReference.cache
+c:\users\женя\documents\visual studio 2013\Projects\ТПР Лаба1\ТПР Лаба1\obj\Debug\ТПР_Лаба1.Form1.resources
+c:\users\женя\documents\visual studio 2013\Projects\ТПР Лаба1\ТПР Лаба1\obj\Debug\ТПР_Лаба1.Properties.Resources.resources
+c:\users\женя\documents\visual studio 2013\Projects\ТПР Лаба1\ТПР Лаба1\obj\Debug\ТПР Лаба1.csproj.GenerateResource.Cache
+c:\users\женя\documents\visual studio 2013\Projects\ТПР Лаба1\ТПР Лаба1\bin\Debug\ТПР Лаба1.exe
+c:\users\женя\documents\visual studio 2013\Projects\ТПР Лаба1\ТПР Лаба1\bin\Debug\ТПР Лаба1.pdb
+c:\users\женя\documents\visual studio 2013\Projects\ТПР Лаба1\ТПР Лаба1\obj\Debug\ТПР Лаба1.exe
+c:\users\женя\documents\visual studio 2013\Projects\ТПР Лаба1\ТПР Лаба1\obj\Debug\ТПР Лаба1.pdb
+H:\ТПР\ТПР Лаба1\ТПР Лаба1\bin\Debug\ТПР Лаба1.exe.config
+H:\ТПР\ТПР Лаба1\ТПР Лаба1\obj\Debug\ТПР Лаба1.exe
+H:\ТПР\ТПР Лаба1\ТПР Лаба1\obj\Debug\ТПР Лаба1.pdb

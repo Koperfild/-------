@@ -21,9 +21,10 @@ void input1();
 void input2();
 void clrscrn();
 FILE *openFile(char *filename,char *mode);
-int IsAplha(char c);//Аналог isaplha но с учётом русских букв. 1 если буква, 0-иначе
+int IsAlpha(char c);//Аналог isaplha но с учётом русских букв. 1 если буква, 0-иначе
 void SkipInput();//Пропуск небукв при вводе.
 void SkipInputIsAlnum();
+char OemSymbol(char c);
 
 int _tmain(int argc, _TCHAR* argv[])
 {
@@ -51,38 +52,40 @@ int _tmain(int argc, _TCHAR* argv[])
 	return 0;    
 }
 
-FILE *openFile(char *filename,char *mode){//в fopen сделано через указатели.filename-имя создаваемого файла,mode - тип открытия файла- wb и т.д.
-	errno_t err;
+FILE *openFile(char *filename, char *mode){//в fopen сделано через указатели.filename-имя создаваемого файла,mode - тип открытия файла- wb и т.д.
+
 	FILE *f;
-	err=fopen_s(&f, filename, "r");//Возвращает 0 в случае успеха
-		
+	f = fopen(filename, "r");//Возвращает 0 в случае успеха
+
 	int c;
-    if (err!=NULL && mode=="r"){
-		printf("Error opening %s file",filename);
+	if (f == NULL && mode == "r"){
+		printf("Error opening %s file", filename);
 		getchar();
-		exit (-1);
+		exit(-1);
 	}
-	if (err==NULL && *mode=='w'){
+	if (f != NULL && *mode == 'w'){
 		fclose(f);
-		printf("The file %s already exists\nPress 1 to rewrite it\nPress 2 to cancel\n",filename);
+		printf("The file %s already exists\nPress 1 to rewrite it\nPress 2 to cancel\n", filename);
 		do{
-			scanf("%d",&c);
-			if (c==1){
-				fopen_s(&f,filename,mode);
+			scanf("%d", &c);
+			if (c == 1){
+				f = fopen(filename, mode);
 				return f;
 			}
-			else if (c==2){
-				f=NULL;
+			else if (c == 2){
+				f = NULL;
 			}
-		}while(c!=2);
-	}else if (err!=NULL && *mode=='w'){
-		fopen_s(&f, filename, mode);
-		return f;
-	}else if (err==NULL && mode=="ab"){
-		fopen_s(&f, filename, mode);
+		} while (c != 2);
+	}
+	else if (f == NULL && *mode == 'w'){
+		f = fopen(filename, mode);
 		return f;
 	}
-	
+	else if (f != NULL && mode == "ab"){
+		f = fopen(filename, mode);
+		return f;
+	}
+
 	return f;
 }
 
@@ -95,26 +98,28 @@ void clrscrn(){
 void input1(){
     FILE *f;
     f=openFile("ships.dat","ab");
+	//f = fopen("ships.dat", "ab");
+	
 	char c='0';
 	while(c!='3'){
-	    clrscrn();
+	    clrscrn();		
 	    printf("All info will be put to \"ships.dat\"\n\n\n");
 		printf("You are filling information about ship\n\n\n");
 		printf("Fill-in ship name\n");// Vstavit proverki
 		fflush(stdin);
-		SkipInputIsAlnum();
+		SkipInput();//Менять на SkipInputIsALnum
 		gets(p->str1);
 		if (strlen(p->str1)==0){
 			strcpy(p->str1,"No info");
 		}
 		printf("Fill-in port of departure\n");
-		SkipInputIsAlnum();
+		//SkipInputIsAlnum();
 		gets(p->str2);
 		if (strlen(p->str2)==0){
 			strcpy(p->str2,"No info");
 		}
 		printf("Fill-in arrival port\n");
-		SkipInputIsAlnum();
+		//SkipInputIsAlnum();
 		gets(p->str3);
 		if (strlen(p->str3)==0){
 			strcpy(p->str3,"No info");
@@ -128,14 +133,14 @@ void input1(){
 		printf("Return to main menu press 3.\n\nTo input one more ship card press any key\n\n");
 		c=getchar();//potom peredelat na s4itivanie stroki. I esli strlen > 1 to incorrect input. bez fflush
 	}
-	fclose(f);
+	if (f!=NULL) fclose(f);
 }
 
 void input2(){
 	//printf("All info will be put to \"ports.dat\"\n\n\n");
 	FILE *f;
-	//f=openFile("ports.dat","ab");
-	f = fopen("ports.dat", "ab");
+	f=openFile("ports.dat","ab");
+	//f = fopen("ports.dat", "ab");
 	char c='0';
 	while(c!='3'){
 	    clrscrn();
@@ -154,7 +159,7 @@ void input2(){
 			gets(p->str2);
 			//printf("%s\n", p->str2);
 			char *g=p->str2;//Для удобства чтоб дальше не писать p->str2
-			OemToChar(p->str2, p->str2);
+			OemToAnsi(p->str2, p->str2);
 			//printf("%s", p->str2);
 			while (*g!='\0'){
 				if (IsAlpha(*g)||(strchr("- ",*g))){
@@ -178,10 +183,11 @@ void input2(){
 		printf("Return to main menu press 3.\nTo input one more port card press any key\n");
 		scanf("%c",&c);//pravit na stroky
 	}
-	fclose(f);
+	if (f!=NULL) fclose(f);
 	clrscrn();
 }
 int IsAlpha(char c){//Аналог isaplha но с учётом русских букв. 1 если буква, 0-иначе
+	c = OemSymbol(c);
 	if ((c >= 'а' && c <= 'я') || (c >= 'А' && c <= 'Я') || (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')){
 		return 1;
 	}
@@ -190,13 +196,21 @@ int IsAlpha(char c){//Аналог isaplha но с учётом русских букв. 1 если буква, 0-и
 void SkipInput(){
 	char c;
 	while (!IsAlpha(c = getc(stdin)));
+	ungetc(c, stdin);
 }
 void SkipInputIsAlnum(){
 	char c;
-	while (!IsAlpha(c = getc(stdin)) || !isalnum(c));
+	while ((!IsAlpha(c = getc(stdin))) || (!isalnum(c)));
+	ungetc(c, stdin);
+}
+char OemSymbol(char c){
+	char k[] = " ";
+	k[0] = c;
+	OemToAnsi(k, k);
+	return k[0];
 }
 
-char *NameCheck(char *Title,void (*skip)(),...){// возвращает указатель на введённую строку//Вводится Title - например "введите порт", функцияпропуска (skipInput) и указатели на функции проверки ввода
+/*char *NameCheck(char *Title,void (*skip)(),...){// возвращает указатель на введённую строку//Вводится Title - например "введите порт", функцияпропуска (skipInput) и указатели на функции проверки ввода
 	printf("%s\n",Title);
 	char c[M];//Строка для хранения названия
 	char *p = Title+sizeof(Title)+sizeof(skip);//Указатель на следующий после *Title в строке параметров функции NameCheck
@@ -225,4 +239,4 @@ char *NameCheck(char *Title,void (*skip)(),...){// возвращает указатель на введё
 			flag1 = 1;
 		}
 	}
-}
+}*/

@@ -1,40 +1,47 @@
-﻿Сборка начата 05.04.2014 22:07:15.
-     1>Проект "H:\Информатика\Пняву\Пняву1\Пняву1\Пняву1.vcxproj" в узле 2 (целевые объекты Build).
+﻿Сборка начата 12.04.2014 4:41:53.
+     1>Проект "C:\Users\Женя\Documents\GitHub\-------\Пняву1\Пняву1\Пняву1.vcxproj" в узле 2 (целевые объекты Build).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\Пняву1.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt "Пняву1.cpp"
          Пняву1.cpp
-     1>h:\информатика\пняву\пняву1\пняву1\пняву1.cpp(66): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(283): см. объявление "scanf"
-     1>h:\информатика\пняву\пняву1\пняву1\пняву1.cpp(102): warning C4996: 'gets': This function or variable may be unsafe. Consider using gets_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(254): см. объявление "gets"
-     1>h:\информатика\пняву\пняву1\пняву1\пняву1.cpp(104): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\string.h(112): см. объявление "strcpy"
-     1>h:\информатика\пняву\пняву1\пняву1\пняву1.cpp(107): warning C4996: 'gets': This function or variable may be unsafe. Consider using gets_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(254): см. объявление "gets"
-     1>h:\информатика\пняву\пняву1\пняву1\пняву1.cpp(109): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\string.h(112): см. объявление "strcpy"
-     1>h:\информатика\пняву\пняву1\пняву1\пняву1.cpp(112): warning C4996: 'gets': This function or variable may be unsafe. Consider using gets_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(254): см. объявление "gets"
-     1>h:\информатика\пняву\пняву1\пняву1\пняву1.cpp(114): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\string.h(112): см. объявление "strcpy"
-     1>h:\информатика\пняву\пняву1\пняву1\пняву1.cpp(118): warning C4996: 'gets': This function or variable may be unsafe. Consider using gets_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(254): см. объявление "gets"
-     1>h:\информатика\пняву\пняву1\пняву1\пняву1.cpp(132): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+     1>c:\users\женя\documents\github\-------\пняву1\пняву1\пняву1.cpp(58): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
                  c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(211): см. объявление "fopen"
-     1>h:\информатика\пняву\пняву1\пняву1\пняву1.cpp(141): warning C4996: 'gets': This function or variable may be unsafe. Consider using gets_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(254): см. объявление "gets"
-     1>h:\информатика\пняву\пняву1\пняву1\пняву1.cpp(149): warning C4996: 'gets': This function or variable may be unsafe. Consider using gets_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(254): см. объявление "gets"
-     1>h:\информатика\пняву\пняву1\пняву1\пняву1.cpp(168): warning C4996: 'gets': This function or variable may be unsafe. Consider using gets_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(254): см. объявление "gets"
-     1>h:\информатика\пняву\пняву1\пняву1\пняву1.cpp(173): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+     1>c:\users\женя\documents\github\-------\пняву1\пняву1\пняву1.cpp(70): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
                  c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(283): см. объявление "scanf"
+     1>c:\users\женя\documents\github\-------\пняву1\пняву1\пняву1.cpp(72): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(211): см. объявление "fopen"
+     1>c:\users\женя\documents\github\-------\пняву1\пняву1\пняву1.cpp(81): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(211): см. объявление "fopen"
+     1>c:\users\женя\documents\github\-------\пняву1\пняву1\пняву1.cpp(85): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(211): см. объявление "fopen"
+     1>c:\users\женя\documents\github\-------\пняву1\пняву1\пняву1.cpp(111): warning C4996: 'gets': This function or variable may be unsafe. Consider using gets_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(254): см. объявление "gets"
+     1>c:\users\женя\documents\github\-------\пняву1\пняву1\пняву1.cpp(113): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\string.h(112): см. объявление "strcpy"
+     1>c:\users\женя\documents\github\-------\пняву1\пняву1\пняву1.cpp(117): warning C4996: 'gets': This function or variable may be unsafe. Consider using gets_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(254): см. объявление "gets"
+     1>c:\users\женя\documents\github\-------\пняву1\пняву1\пняву1.cpp(119): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\string.h(112): см. объявление "strcpy"
+     1>c:\users\женя\documents\github\-------\пняву1\пняву1\пняву1.cpp(123): warning C4996: 'gets': This function or variable may be unsafe. Consider using gets_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(254): см. объявление "gets"
+     1>c:\users\женя\documents\github\-------\пняву1\пняву1\пняву1.cpp(125): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\string.h(112): см. объявление "strcpy"
+     1>c:\users\женя\documents\github\-------\пняву1\пняву1\пняву1.cpp(129): warning C4996: 'gets': This function or variable may be unsafe. Consider using gets_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(254): см. объявление "gets"
+     1>c:\users\женя\documents\github\-------\пняву1\пняву1\пняву1.cpp(153): warning C4996: 'gets': This function or variable may be unsafe. Consider using gets_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(254): см. объявление "gets"
+     1>c:\users\женя\documents\github\-------\пняву1\пняву1\пняву1.cpp(159): warning C4996: 'gets': This function or variable may be unsafe. Consider using gets_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(254): см. объявление "gets"
+     1>c:\users\женя\documents\github\-------\пняву1\пняву1\пняву1.cpp(179): warning C4996: 'gets': This function or variable may be unsafe. Consider using gets_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(254): см. объявление "gets"
+     1>c:\users\женя\documents\github\-------\пняву1\пняву1\пняву1.cpp(184): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(283): см. объявление "scanf"
+     1>c:\users\женя\documents\github\-------\пняву1\пняву1\пняву1.cpp(157): warning C4101: c: неиспользованная локальная переменная
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"H:\Информатика\Пняву\Пняву1\Debug\Пняву1.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"H:\Информатика\Пняву\Пняву1\Debug\Пняву1.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"H:\Информатика\Пняву\Пняву1\Debug\Пняву1.lib" /MACHINE:X86 Debug\stdafx.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Женя\Documents\GitHub\-------\Пняву1\Debug\Пняву1.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Женя\Documents\GitHub\-------\Пняву1\Debug\Пняву1.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Женя\Documents\GitHub\-------\Пняву1\Debug\Пняву1.lib" /MACHINE:X86 Debug\stdafx.obj
          "Debug\Пняву1.obj"
-         Пняву1.vcxproj -> H:\Информатика\Пняву\Пняву1\Debug\Пняву1.exe
-     1>Сборка проекта "H:\Информатика\Пняву\Пняву1\Пняву1\Пняву1.vcxproj" завершена (целевые объекты Build).
+         Пняву1.vcxproj -> C:\Users\Женя\Documents\GitHub\-------\Пняву1\Debug\Пняву1.exe
+     1>Сборка проекта "C:\Users\Женя\Documents\GitHub\-------\Пняву1\Пняву1\Пняву1.vcxproj" завершена (целевые объекты Build).
 
 Сборка успешно завершена.
 
-Затраченное время: 00:00:15.62
+Затраченное время: 00:00:00.65
