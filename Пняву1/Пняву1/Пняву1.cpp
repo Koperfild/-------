@@ -159,7 +159,7 @@ void input2(){
 			gets(p->str2);
 			//printf("%s\n", p->str2);
 			char *g=p->str2;//Для удобства чтоб дальше не писать p->str2
-			OemToAnsi(p->str2, p->str2);
+			//OemToAnsi(p->str2, p->str2);
 			//printf("%s", p->str2);
 			while (*g!='\0'){
 				if (IsAlpha(*g)||(strchr("- ",*g))){
@@ -200,7 +200,7 @@ void SkipInput(){
 }
 void SkipInputIsAlnum(){
 	char c;
-	while ((!IsAlpha(c = getc(stdin))) || (!isalnum(c)));
+	while ((!IsAlpha(c = getc(stdin))) && (!isalnum(c)));
 	ungetc(c, stdin);
 }
 char OemSymbol(char c){

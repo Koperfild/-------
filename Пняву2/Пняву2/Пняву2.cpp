@@ -174,13 +174,16 @@ void OutputToFile(){//vivod nyjno delat f textovii fail
 	if (fout = fopen("Shipsoutput.txt", "r")){//Проверка существования файла вывода данных и выбор действия
 		fclose(fout);
 		do{
-			printf("File Shipsouput.txt already exists. Do you want to rewrite or to supplement it?\nTo rewrite press 1\nTo supplement press 2\n");
+			printf("File Shipsouput.txt already exists. Do you want to rewrite or to supplement it?\nTo rewrite press 1\nTo supplement press 2\nTo cancel writing press 3\n");
 			scanf("%d", &c);
 			if (c == 1){
 				fout = openFile("Shipsoutput.txt", "w");
 			}
 			if (c == 2){
 				fout = openFile("Shipsoutput.txt", "a");
+			}
+			if (c == 3){
+				return;
 			}
 		} while (c != 1 && c != 2);
 	}

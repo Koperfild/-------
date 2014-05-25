@@ -10,3 +10,27 @@ c:\users\женя\documents\visual studio 2013\Projects\ТПР Лаба1\ТПР 
 H:\ТПР\ТПР Лаба1\ТПР Лаба1\bin\Debug\ТПР Лаба1.exe.config
 H:\ТПР\ТПР Лаба1\ТПР Лаба1\obj\Debug\ТПР Лаба1.exe
 H:\ТПР\ТПР Лаба1\ТПР Лаба1\obj\Debug\ТПР Лаба1.pdb
+C:\Users\Женя\Documents\GitHub\-------\ТПР Лаба1\ТПР Лаба1\bin\Debug\ТПР Лаба1.exe.config
+C:\Users\Женя\Documents\GitHub\-------\ТПР Лаба1\ТПР Лаба1\obj\Debug\ТПР Лаба1.exe
+C:\Users\Женя\Documents\GitHub\-------\ТПР Лаба1\ТПР Лаба1\obj\Debug\ТПР Лаба1.pdb
+C:\Users\Женя\Documents\GitHub\-------\ТПР Лаба1\ТПР Лаба1\bin\Debug\ТПР Лаба1.exe
+C:\Users\Женя\Documents\GitHub\-------\ТПР Лаба1\ТПР Лаба1\bin\Debug\ТПР Лаба1.pdb
+C:\Users\Женя\Documents\GitHub\-------\ТПР Лаба1\ТПР Лаба1\obj\Debug\ТПР Лаба1.csprojResolveAssemblyReference.cache
+C:\Users\Женя\Documents\GitHub\-------\ТПР Лаба1\ТПР Лаба1\obj\Debug\ТПР_Лаба1.Form1.resources
+C:\Users\Женя\Documents\GitHub\-------\ТПР Лаба1\ТПР Лаба1\obj\Debug\ТПР_Лаба1.Properties.Resources.resources
+C:\Users\Женя\Documents\GitHub\-------\ТПР Лаба1\ТПР Лаба1\obj\Debug\ТПР Лаба1.csproj.GenerateResource.Cache
+F:\ТПР\ТПР Лаба1\ТПР Лаба1\bin\Debug\ТПР Лаба1.exe.config
+F:\ТПР\ТПР Лаба1\ТПР Лаба1\obj\Debug\ТПР Лаба1.exe
+F:\ТПР\ТПР Лаба1\ТПР Лаба1\obj\Debug\ТПР Лаба1.pdb
+F:\ТПР\ТПР Лаба1\ТПР Лаба1\bin\Debug\ТПР Лаба1.exe
+F:\ТПР\ТПР Лаба1\ТПР Лаба1\bin\Debug\ТПР Лаба1.pdb
+F:\ТПР\ТПР Лаба1\ТПР Лаба1\obj\Debug\ТПР Лаба1.csprojResolveAssemblyReference.cache
+F:\ТПР\ТПР Лаба1\ТПР Лаба1\obj\Debug\ТПР_Лаба1.Form1.resources
+F:\ТПР\ТПР Лаба1\ТПР Лаба1\obj\Debug\ТПР_Лаба1.Properties.Resources.resources
+F:\ТПР\ТПР Лаба1\ТПР Лаба1\obj\Debug\ТПР Лаба1.csproj.GenerateResource.Cache
+H:\ТПР\ТПР Лаба1\ТПР Лаба1\bin\Debug\ТПР Лаба1.exe
+H:\ТПР\ТПР Лаба1\ТПР Лаба1\bin\Debug\ТПР Лаба1.pdb
+H:\ТПР\ТПР Лаба1\ТПР Лаба1\obj\Debug\ТПР Лаба1.csprojResolveAssemblyReference.cache
+H:\ТПР\ТПР Лаба1\ТПР Лаба1\obj\Debug\ТПР_Лаба1.Form1.resources
+H:\ТПР\ТПР Лаба1\ТПР Лаба1\obj\Debug\ТПР_Лаба1.Properties.Resources.resources
+H:\ТПР\ТПР Лаба1\ТПР Лаба1\obj\Debug\ТПР Лаба1.csproj.GenerateResource.Cache

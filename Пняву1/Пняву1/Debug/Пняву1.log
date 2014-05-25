@@ -1,4 +1,4 @@
-﻿Сборка начата 12.04.2014 4:41:53.
+﻿Сборка начата 26.04.2014 1:15:29.
      1>Проект "C:\Users\Женя\Documents\GitHub\-------\Пняву1\Пняву1\Пняву1.vcxproj" в узле 2 (целевые объекты Build).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\Пняву1.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt "Пняву1.cpp"
@@ -44,4 +44,4 @@
 
 Сборка успешно завершена.
 
-Затраченное время: 00:00:00.65
+Затраченное время: 00:00:01.19

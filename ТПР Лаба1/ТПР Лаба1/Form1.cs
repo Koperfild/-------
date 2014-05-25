@@ -23,7 +23,7 @@ namespace ТПР_Лаба1
             MathGraph();
         }
         private void MathGraph()
-        {
+        {            
             const int m = 8, n = 8;  
             int[][] Matr=new int[m][] 
             {
@@ -39,24 +39,29 @@ namespace ТПР_Лаба1
             int[] row=new int[n];//Промежуточкая Строка 
             int[] column=new int[m];//Промежуточный Столбец
 
-            List<PointF> Points1 = new List<PointF>();
-            List<PointF> Points2 = new List<PointF>();
+            //List<PointF> Points1 = new List<PointF>();
+            //List<PointF> Points2 = new List<PointF>();
             
             Console.WriteLine("Input number of iterations");
             //int N = int.Parse(Console.ReadLine());//Число итераций
-            int N = 20;
+            int N = 25;
             Console.WriteLine("Input initial row to begin");
             //int ik=int.Parse(Console.ReadLine());//Начальная строка с которой начинаем
-            int ik = 1;
+            int ik = 0;
             int jk;
-            int max;
-            int min;
+            float max;
+            float min;
             float gamma;
             float maxgamma=0;
             float mingamma=0;
             for(int i = 0; i < N; ++i)
-            {                
-                Array.Copy(Matr[ik], row, Matr[ik].Length);
+            {
+                for (int k = 0; k < row.Length; ++k)
+                {
+                    row[k] = Matr[ik][k] + row[k];
+                }
+                 //   Matr[ik].CopyTo(row, 0);
+                //Array.Copy(Matr[ik], row, Matr[ik].Length);
                 min = row[0];
                 jk=0;
                 for (int j = 1; j < row.Length; ++j)
@@ -70,54 +75,43 @@ namespace ТПР_Лаба1
                 gamma = min/(i+1);
                 if (i==0)
                 {
-                    maxgamma=mingamma=gamma;                    
+                    maxgamma=gamma;                    
                 }
-                if (gamma>maxgamma)
+                else if (gamma>maxgamma)
                 {
                     maxgamma = gamma;
                 }
-                Points1.Add(new PointF(i+1, maxgamma));
+                this.chart1.Series["Lower"].Points.AddXY(i+1, maxgamma);                                   
                 for (int j = 0; j < Matr.Length; ++j)
                 {
-                    column[j] = Matr[j][jk];
-                }
+                    column[j] = Matr[j][jk] + column[j];
+                }                
                 ik=0;
-                max=row[0];
+                max = column[0];
+
                 for (int j=1;j<column.Length;++j)
                 {
                     if (column[j]>max)
                     {
-                        max=row[j];
+                        max = column[j];
                         ik=j;
                     }
                 }
                 gamma=max/(i+1);
-                if (gamma < mingamma)
+                if (i == 0)
                 {
                     mingamma = gamma;
                 }
-                Points2.Add(new PointF(i+1,mingamma));
+                else if (gamma < mingamma)
+                {
+                    mingamma = gamma;
+                }                
+                this.chart1.Series["Upper"].Points.AddXY(i + 1, mingamma);
             }
-            PointF[] Points111 = new PointF[Points1.Count];
-            PointF[] Points222 = new PointF[Points2.Count];
-            for (int i=0;i<Points1.Count;++i)
-            {
-                Points111[i]=Points1[i];
-                Points222[i]=Points2[i];
-            }
-            int fillHeight = 300;
-            int fillWidth = 600;
-            int otstup = 5;
-            Graphics e = this.CreateGraphics();
-            SolidBrush Brush = new SolidBrush(Color.Brown);
-            e.FillRectangle(Brush, new Rectangle(otstup, otstup, fillWidth, fillHeight));
-            e.FillRectangle(Brush, new Rectangle(otstup, 2*otstup+fillHeight, fillWidth, fillHeight));
+        }
 
-            Pen pen1 = new Pen(Color.Blue);
-            Pen pen2 = new Pen(Color.Red);
-            
-            e.DrawCurve(pen1,Points111);
-            e.DrawCurve(pen2,Points222);
+        private void chart1_Click(object sender, EventArgs e)
+        {
 
         }
     }
