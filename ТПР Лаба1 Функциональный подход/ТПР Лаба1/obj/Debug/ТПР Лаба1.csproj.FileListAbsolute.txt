@@ -34,3 +34,6 @@ H:\ТПР\ТПР Лаба1\ТПР Лаба1\obj\Debug\ТПР Лаба1.csprojRes
 H:\ТПР\ТПР Лаба1\ТПР Лаба1\obj\Debug\ТПР_Лаба1.Form1.resources
 H:\ТПР\ТПР Лаба1\ТПР Лаба1\obj\Debug\ТПР_Лаба1.Properties.Resources.resources
 H:\ТПР\ТПР Лаба1\ТПР Лаба1\obj\Debug\ТПР Лаба1.csproj.GenerateResource.Cache
+C:\Users\Женя\Documents\GitHub\-------\ТПР Лаба1 Функциональный подход\ТПР Лаба1\bin\Debug\ТПР Лаба1.exe.config
+C:\Users\Женя\Documents\GitHub\-------\ТПР Лаба1 Функциональный подход\ТПР Лаба1\obj\Debug\ТПР Лаба1.exe
+C:\Users\Женя\Documents\GitHub\-------\ТПР Лаба1 Функциональный подход\ТПР Лаба1\obj\Debug\ТПР Лаба1.pdb
