@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.MainTable = new System.Windows.Forms.DataGridView();
             this.Наименование = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -62,6 +62,7 @@
             // 
             // MainTable
             // 
+            this.MainTable.AutoGenerateColumns = false;
             this.MainTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.MainTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Наименование,
@@ -69,6 +70,7 @@
             this.Количество,
             this.ф,
             this.в});
+            this.MainTable.DataSource = this.productsBindingSource;
             this.MainTable.Location = new System.Drawing.Point(34, 54);
             this.MainTable.Name = "MainTable";
             this.MainTable.Size = new System.Drawing.Size(547, 326);
@@ -94,17 +96,17 @@
             // 
             // ф
             // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.NullValue = "+";
-            this.ф.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.NullValue = "+";
+            this.ф.DefaultCellStyle = dataGridViewCellStyle1;
             this.ф.HeaderText = "ф";
             this.ф.Name = "ф";
             // 
             // в
             // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.NullValue = "-";
-            this.в.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.NullValue = "-";
+            this.в.DefaultCellStyle = dataGridViewCellStyle2;
             this.в.HeaderText = "в";
             this.в.Name = "в";
             this.в.Text = "";

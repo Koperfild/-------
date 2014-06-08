@@ -91,7 +91,7 @@ namespace Лаба1
             Наименование.DataPropertyName = "productname";
             Цена.DataPropertyName = "price";
             Количество.DataPropertyName = "quantity";
-
+            
             /*
             var NameColumn= new MyTextBoxColumn("productname","Наименование");
             //NameColumn.DataGridView.DataBindings.Add(productsBindingSource);    
@@ -139,7 +139,7 @@ namespace Лаба1
         }*/
         public Products ReadFromFile()
         {
-            string path = @"H:\Информатика\ООП\XML.xml";
+            string path = @"XML.xml";
             System.IO.StreamReader file = new System.IO.StreamReader(path);
             System.Xml.Serialization.XmlSerializer reader = new System.Xml.Serialization.XmlSerializer(typeof(Products));
             Products prod = new Products();
@@ -178,11 +178,11 @@ namespace Лаба1
             set;
         }        
     }
-    class Calculation
+    public class Calculation
     {
         //abstract public double cost(double x,double y);
     }
-    class RoadCalc : Calculation
+    public class RoadCalc : Calculation
     {
         const int N = 10;//Нужно ли вообще где-то const?
         const double inf = 1e9;//Бесконечность для алгоритма
