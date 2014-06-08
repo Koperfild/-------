@@ -43,16 +43,19 @@ namespace Лаба1
         }
 
         private void button1_Click(object sender, EventArgs e)
-        {
-            Products prod = new Products();
-            prod=prod.ReadFromFile();
-            MainTable.DataSource = prod;
-            textBox1.Refresh();
-            for (int i = 0; i < 5; ++i)
+        {           
+            textBox1.Clear();
+            /*if (weight < Level1)//Получить weight из Products и задать Level1
             {
-                textBox1.AppendText(prod.order[i].productname + prod.order[i].price);
-            }
+                var delivery1 = new Quadracopter();
+                textBox1.AppendText("The delivery costs are:"+ delivery1.Cost(from,to));
+            }else{
+                var delivery1=new Truck();
+                textBox1.AppendText("The delivery costs are:"+ delivery1.Cost(from,to));
+            }*/
         }
+        
+       
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -68,30 +71,53 @@ namespace Лаба1
                 {
                     Product prod = new Product();
                     prod.productname = "Product" + Convert.ToString(i + 1);
-                    p.order.Add(prod);
-                    //p.order[i].productname = "Product" + Convert.ToString(i+1);//Почему меняет неправильно
+                    p.order.Add(prod);                    
                 }
                 serializer.Serialize(file, p);
-                //myFile.Close();
-                //НАдо закрывать поток прежде чем открыть его на чтение?
-                System.IO.StreamReader input = new System.IO.StreamReader(myFile);
+                file.Close();
+                
+                /*System.IO.StreamReader input = new System.IO.StreamReader(path);//Почему не пашет с myFile вместо path?
                 serializer.Deserialize(input);
+                input.Close();*/
             }
             
         }
-        /*private void Form1_Load(object sender, System.EventArgs e)
-        {
-            count += 1;
-        }*/
+        private void Form1_Load(object sender, System.EventArgs e)
+        {            
+            Products prod = new Products();
+            prod = prod.ReadFromFile();
+            
+            productsBindingSource.DataSource = prod.order;
+            Наименование.DataPropertyName = "productname";
+            Цена.DataPropertyName = "price";
+            Количество.DataPropertyName = "quantity";
 
-        /*private void MainTable_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
-        {
+            /*
+            var NameColumn= new MyTextBoxColumn("productname","Наименование");
+            //NameColumn.DataGridView.DataBindings.Add(productsBindingSource);    
+            var PriceColumn=new MyTextBoxColumn("price","Цена");
+            var QuantityColumn=new MyTextBoxColumn("quantity","Кол-во");
+            MainTable.Columns.Add(NameColumn);
+            MainTable.Columns.Add(PriceColumn);
+            MainTable.Columns.Add(QuantityColumn);
+             */            
+        }
 
-        }*/
+       
+
+        
     }
     //Структура лучше ибо класс содержит ссылки а не значения полей. И сравнение 2-х классов будет сравнение ссылок а не значений
-    //Существует ли прямой доступ по индексу?
 
+    /*class MyTextBoxColumn : DataGridViewTextBoxColumn
+    {
+        public MyTextBoxColumn(string property,string ColumnName)
+        {
+            DataGridViewColumn NameColumn = new DataGridViewTextBoxColumn();
+            DataPropertyName = property;
+            Name = ColumnName;            
+        }
+    }*/
     [System.Serializable]
     public class Products
     {
@@ -100,7 +126,7 @@ namespace Лаба1
 
         }
         public List<Product> order = new List<Product>();//Как сделать так чтобы сделать private, но использовать в Form
-        /*public Product this[int index]//Зачем это у Серёги?Или это в class Products?
+        /*public Product this[int index]//Вроде индексатор.Зачем это у Серёги?Или это в class Products?
         {
             get
             {
@@ -113,24 +139,19 @@ namespace Лаба1
         }*/
         public Products ReadFromFile()
         {
-            string line;
-            System.IO.StreamReader file = new System.IO.StreamReader(@"H:\Информатика\ООП\XML.xml");
-            System.Xml.Serialization.XmlSerializer reader = new System.Xml.Serialization.XmlSerializer(typeof(Product));            
-            return (Products)reader.Deserialize(file);
-            
-            //Сделать заполнение dataGridView этими данными
-        }
-        
-        
+            string path = @"H:\Информатика\ООП\XML.xml";
+            System.IO.StreamReader file = new System.IO.StreamReader(path);
+            System.Xml.Serialization.XmlSerializer reader = new System.Xml.Serialization.XmlSerializer(typeof(Products));
+            Products prod = new Products();
+            prod = (Products)reader.Deserialize(file);//Как тут происходит закрытие file?            
+            file.Close();
+            return prod;           
+        }               
     }
        
     public class Product
     {
-        //private string _name;//если делаем свойство без поля то можно не писать private string. И если просто присваивания и считывания значения то можно писать get;set. Если хоть одно расписываем то и второе надо в {}
-        public Product()
-        {
-            
-        }
+        //private string _name;//если делаем свойство без поля то можно не писать private string. И если просто присваивания и считывания значения то можно писать get;set. Если хоть одно расписываем то и второе надо в {}       
         public string productname//делать всё через get set
         {
             get;
@@ -155,52 +176,24 @@ namespace Лаба1
         {
             get;
             set;
-        }
-        //
-        //Убрал для Сериализации
-        /*
-        public Product(string productname,string price="0", string quantity="0", string weight="0", string dimensions="")
-        {
-            this.productname = productname;
-            this.price = price;
-            this.quantity = quantity;
-            this.weight = weight;
-            this.dimensions = dimensions;
-        }//Разбираться в каком виде у меня в XML это будет. все string или double тоже. И как потом в DataGridView конвертировать double в string
-        
-        
-        public void FillDataGridView()
-        {
-            for (int i = 0; i < order.Count; ++i)
-            {
-                ;
-            }
-        }
-         */
-        /*public Order(string productname,double price, int quantity, double weight)
-        {
-            this.productname = productname;
-            this.price = price;
-            this.quantity = quantity;
-            this.weight = weight;
-        }*/
+        }        
     }
-    abstract class Calculation
+    class Calculation
     {
-        abstract public double cost();
+        //abstract public double cost(double x,double y);
     }
     class RoadCalc : Calculation
     {
         const int N = 10;//Нужно ли вообще где-то const?
         const double inf = 1e9;//Бесконечность для алгоритма
-        int[,] IncidenceMatrix = new int[N, N];//Тоже можно десериализовать из файла//Делать int или double?
-        int[,] tempMatr = new int[N, N];
+        static int[,] IncidenceMatrix = new int[N, N];//Тоже можно десериализовать из файла//Делать int или double?
+        static int[,] tempMatr = new int[N, N];
 
         protected void FillIncidenceMatrix()//Как сделать так чтобы в наследниках в итоге была одна и та же матрица смежности?(IncidenceMatrix)
         {
             Matrix.rand(ref IncidenceMatrix);
         }
-        public override double cost(int x, int y)//Делать enum городов
+        public static int cost(int x, int y)//Делать enum городов
         {            
             for (int k = 0; k < N; ++k)
             {
@@ -213,31 +206,37 @@ namespace Лаба1
                     }
                 }
             }
-            return (double)IncidenceMatrix[x, y];
+            return IncidenceMatrix[x, y];
         }
     }
-    class AirCalc : Calculation
+    public class AirCalc : Calculation//Продумать какую систему координат и как использовать. Центр отправки в 0,0 или существует много центров отправки
     {       
         //Делать enum городов                
-        public override double cost(double x,double y)
+        public static double cost(double x,double y)
         {
             return Math.Sqrt(x * x + y * y);
+        }        
+    }
+    class Deliverer
+    {
+        protected double cost;
+        double time;
+    }
+    class Truck:Deliverer
+    {
+        
+        public void Cost(int from,int to)
+        {
+            cost=RoadCalc.cost(from,to);
         }
     }
-
-//Создать метод который создаст лист товаров и сделает прорисовку.
-/*public InfFile this[string key]
+    class Quadracopter : Deliverer
+    {
+        public void Cost(double x, double y)
         {
-            get
-            {
-                return this.DictionaryInfFile[key];
-            }
-            set
-            {
-                this.DictionaryInfFile[key] = value;
-            }
-        }*/
-
+            cost = AirCalc.cost(x, y);
+        }
+    }
     class Matrix
     {
         public static void rand(ref int[,] a)

@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.MainTable = new System.Windows.Forms.DataGridView();
             this.Наименование = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -62,7 +62,6 @@
             // 
             // MainTable
             // 
-            this.MainTable.AutoGenerateColumns = false;
             this.MainTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.MainTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Наименование,
@@ -70,10 +69,9 @@
             this.Количество,
             this.ф,
             this.в});
-            this.MainTable.DataSource = this.productsBindingSource;
-            this.MainTable.Location = new System.Drawing.Point(12, 44);
+            this.MainTable.Location = new System.Drawing.Point(34, 54);
             this.MainTable.Name = "MainTable";
-            this.MainTable.Size = new System.Drawing.Size(543, 326);
+            this.MainTable.Size = new System.Drawing.Size(547, 326);
             this.MainTable.TabIndex = 0;
             this.MainTable.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.MainTable.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
@@ -96,17 +94,17 @@
             // 
             // ф
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.NullValue = "+";
-            this.ф.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.NullValue = "+";
+            this.ф.DefaultCellStyle = dataGridViewCellStyle3;
             this.ф.HeaderText = "ф";
             this.ф.Name = "ф";
             // 
             // в
             // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.NullValue = "-";
-            this.в.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.NullValue = "-";
+            this.в.DefaultCellStyle = dataGridViewCellStyle4;
             this.в.HeaderText = "в";
             this.в.Name = "в";
             this.в.Text = "";
@@ -114,7 +112,7 @@
             // productsBindingSource
             // 
             this.productsBindingSource.DataSource = typeof(Лаба1.Products);
-            this.productsBindingSource.RaiseListChangedEvents = global::Лаба1.Properties.Settings.Default.fdadfsasdf;
+            this.productsBindingSource.DataMemberChanged += new System.EventHandler(this.button1_Click);
             // 
             // button1
             // 
@@ -122,7 +120,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(94, 45);
             this.button1.TabIndex = 1;
-            this.button1.Text = "Read from File to table";
+            this.button1.Text = "Calculate Delivery";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -269,6 +267,7 @@
             this.Controls.Add(this.MainTable);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.MainTable)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.productsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).EndInit();
@@ -282,11 +281,6 @@
         #endregion
 
         private System.Windows.Forms.DataGridView MainTable;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Наименование;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Цена;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Количество;
-        private System.Windows.Forms.DataGridViewButtonColumn ф;
-        private System.Windows.Forms.DataGridViewButtonColumn в;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.BindingSource productsBindingSource;
@@ -303,6 +297,11 @@
         private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
         private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Наименование;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Цена;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Количество;
+        private System.Windows.Forms.DataGridViewButtonColumn ф;
+        private System.Windows.Forms.DataGridViewButtonColumn в;
 
     }
 }
