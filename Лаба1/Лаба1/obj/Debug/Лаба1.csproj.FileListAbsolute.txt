@@ -26,3 +26,16 @@ J:\Информатика\ООП\Лаба1\Лаба1\obj\Debug\Лаба1.Form1.r
 J:\Информатика\ООП\Лаба1\Лаба1\obj\Debug\Лаба1.Properties.Resources.resources
 J:\Информатика\ООП\Лаба1\Лаба1\obj\Debug\Лаба1.UserControl1.resources
 J:\Информатика\ООП\Лаба1\Лаба1\obj\Debug\Лаба1.csproj.GenerateResource.Cache
+C:\Users\Julia1\Desktop\Женя\Лаба1\Лаба1\bin\Debug\Лаба1.exe.config
+C:\Users\Julia1\Desktop\Женя\Лаба1\Лаба1\obj\Debug\Лаба1.exe
+C:\Users\Julia1\Desktop\Женя\Лаба1\Лаба1\obj\Debug\Лаба1.pdb
+C:\Users\Julia1\Desktop\Женя\Лаба1\Лаба1\bin\Debug\Лаба1.exe
+C:\Users\Julia1\Desktop\Женя\Лаба1\Лаба1\bin\Debug\Лаба1.pdb
+C:\Users\Julia1\Desktop\Женя\Лаба1\Лаба1\obj\Debug\Лаба1.csprojResolveAssemblyReference.cache
+C:\Users\Julia1\Desktop\Женя\Лаба1\Лаба1\obj\Debug\Лаба1.Form1.resources
+C:\Users\Julia1\Desktop\Женя\Лаба1\Лаба1\obj\Debug\Лаба1.Properties.Resources.resources
+C:\Users\Julia1\Desktop\Женя\Лаба1\Лаба1\obj\Debug\Лаба1.UserControl1.resources
+C:\Users\Julia1\Desktop\Женя\Лаба1\Лаба1\obj\Debug\Лаба1.csproj.GenerateResource.Cache
+E:\Информатика\ООП\Лаба1\Лаба1\bin\Debug\Лаба1.exe.config
+E:\Информатика\ООП\Лаба1\Лаба1\obj\Debug\Лаба1.exe
+E:\Информатика\ООП\Лаба1\Лаба1\obj\Debug\Лаба1.pdb
