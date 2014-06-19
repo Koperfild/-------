@@ -10,6 +10,49 @@ using System.Windows.Forms;
 
 namespace Лаба1
 {
+    enum runwayType { No, Short, Middle, Long };
+    enum seatType { seatPlace=1, platzkart=2, compartment=4 };
+    public class Oil
+    {
+        public string Name{get;set;}
+        public double Price{get;set;}
+        public Oil(string Name,double Price)
+        {
+            this.Name = Name;
+            this.Price = Price;
+        }
+    }
+    public class OilPrices//Или куда-то ещё закинуть List  с ценами топлива?
+    {
+        private List<Oil> Oils = new List<Oil>();//Можно переделать с индексатором чтобы без точки сразу к List обращаться
+        public OilPrices()
+        {
+            readPrices("input.txt");//input.txt файл с ценами на топливо
+        }
+        private void readPrices(string priceSource)
+        {
+            System.IO.StreamReader file = new System.IO.StreamReader(priceSource);
+            string Record;
+            while ((Record = file.ReadLine()) != null)
+            {
+                string[] RecordParts = Record.Split(new char[] { ' ', '\t' });
+                double x;
+                double.TryParse(RecordParts[1], out x);//Можно вставить проверки удачно ли считалось + проверка названия топлива. Можно сделать перечень существующих видов топлива в виде enum и сравнивать с ним                
+                Oils.Add(new Oil(RecordParts[0], x));
+            }
+        }
+        public double getPrice(string oilType)
+        {
+            Oil oil1 = Oils.Find(
+            delegate(Oil oil)
+            {
+                return string.Compare(oil.Name,oilType)==0;
+            }
+            );
+            return oil1.Price;
+        }
+
+    }
     public partial class Form1 : Form
     {
         public Form1()
@@ -177,67 +220,141 @@ namespace Лаба1
             get;
             set;
         }
-    }
-    public class Calculation
+    }    
+    class Matrix
     {
-        //abstract public double cost(double x,double y);
-        public enum Cities { };//Заполнить
+        public static void rand(ref int[,] a)
+        {
+            Random rand1 = new Random();
+            for (int i = 0; i < a.GetLength(0); ++i)
+            {
+                for (int j = 0; j < a.GetLength(1); ++j)
+                {
+                    a[i, j] = rand1.Next(51);
+                }
+            }
+
+        }
+
+    }
+    class AirPort
+    {
+        public string Name { get; set; }//Наименование Пункта
+        //public string runwayType { get; set; }//Делать в алгоритме проверку карты на наличие дороги и аэропорта в пункте назначения
+        public double x { get; set; }
+        public double y { get; set; }
+
+        private runwayType runway;
+        public AirPort(string Name, double x, double y, string runwayType)
+        {
+            this.Name = Name;
+            this.x = x;
+            this.y = y;
+            if (Enum.IsDefined(typeof(runwayType), runwayType))
+            {
+                Enum.TryParse<runwayType>(runwayType, true, out runway);
+            }
+        }
+    }
+    class Map
+    {
+        private string mapPath;
+        abstract void readMapFromFile(string path);
+        //abstract bool Communicate(string from, string to);убрал ибо в AirMap и GraphMap разные параметры у этого метода. Точнее в AirMap добавлен runwayType
+    }
+    class AirMap
+    {
+        static private List<AirPort> Points = new List<AirPort>();
+        //private static double[][] DistanceMatrix;
+        public AirMap(string mapPath)
+        {
+            readMapFromFile(mapPath);
+        }
+        private void readMapFromFile(string mapPath)//В файле 1 строка- 1 пункт. 1-название 2-х 3-у,4-тип ВПП(runwayType). Читаю в RecordParts, заношу в List<Point> Points
+        {
+            System.IO.StreamReader file = new System.IO.StreamReader(mapPath);
+            string Record;
+            while ((Record = file.ReadLine()) != null)
+            {
+                string[] RecordParts = Record.Split(new char[] { ' ', '\t' });
+                double x;
+                double.TryParse(RecordParts[1], out x);//Можно вставить проверки удачно ли считалось
+                double y;
+                double.TryParse(RecordParts[2], out y);
+                //string runwayType = RecordParts[3];
+                Points.Add(new AirPort(RecordParts[0], x, y,RecordParts[3]));
+            }
+        }
+        public bool Communicate(string from, string to,string runwayType)
+        {
+            AirPort pt1 = Points.Find(
+            delegate(AirPort pt)//анонимный делегат
+            {
+                return (string.Compare(pt.Name, from) == 0)&&(pt1.)
+            }
+            );
+            AirPort pt2 = Points.Find(
+            delegate(AirPort pt)
+            {
+                return string.Compare(pt.Name, to) == 0;
+            }
+            );
+            if (pt1 != null && pt2 != null)
+            {
+                return true;
+            }
+            else return false;
+        }
+        public double Distance(string from, string to)
+        {
+            AirPort pt1 = Points.Find(
+            delegate(AirPort pt)//анонимный делегат
+            {
+                return string.Compare(pt.Name, from) == 0;
+            }
+            );
+            AirPort pt2 = Points.Find(
+            delegate(AirPort pt)
+            {
+                return string.Compare(pt.Name, to) == 0;
+            }
+            );
+            if (pt1 != null && pt2 != null)
+            {
+                return Math.Sqrt(Math.Pow(pt1.x - pt2.x, 2) + Math.Pow(pt1.y - pt2.y, 2));
+            }
+            else//Делать else. Возможно 0 и при обрабатывании считать 0 как отсутствие путей сообщения между from  и to
+            {
+                return ;
+            }
+        }
+        //Заполнение матрицы расстояний по координатам по прямым
+        //Не нужно. Сразу считаю расстояние в Distance
+        /*private void InitDistanceMatrix()
+        {
+            for (int i = 0; i < Points.Count; ++i)
+            {
+                for (int j = 0; j < Points.Count; ++j)
+                {
+                    DistanceMatrix[i][j] = Math.Sqrt(Math.Pow(Points[i].x - Points[j].x, 2) + Math.Pow(Points[i].y - Points[j].y, 2));
+                }
+            }
+        }*/
     }
     
-    public class RoadCalc : Calculation
+    class GraphMap:Map
     {
         const int N = 10;//Нужно ли вообще где-то const?
         const double inf = double.MaxValue;//Бесконечность для алгоритма
         private static double[][] OptimalWays;//Для static понадобится public?
-        private static double[][] IncidenceMatrix;
-        private string[] PointsNames;
-        //Map map;
-        public RoadCalc(string mapPath)    
-        {            
+        private static double[][] IncidenceMatrix;        
+        private string[] PointsNames{ get; set; }
+        //пункты доставки. Хранятся первой строчкой в файле 
+        public GraphMap(string mapPath)
+        {
             readMapFromFile(mapPath);
-            CalcOptimalWays(IncidenceMatrix);
-            //map = new Map(mapPath);
-            //OptimalWays = CalcOptimalWays(map.IncidenceMatrix);
-        }
-        private virtual bool Communicate(string from, string to)
-        {
-            bool flag1, flag2;
-            flag1 = flag2 = false;
-            //Сравниваем есть ли на данной карте связь двух пунктов
-            for (int i = 0; i < PointsNames.Length; ++i)
-            {
-                if (string.Compare(from,PointsNames[i],true)==0)
-                {
-                    flag1 = true;
-                }
-                if (string.Compare(to,PointsNames[i],true)==0)
-                {
-                    flag2 = true;
-                }
-            }
-            if (flag1 && flag2) { return true; }
-            else { return false; }
-        }
-        public double cost(string from, string to)
-        {
-            if (Communicate(from, to))
-            {
-                int i,j;
-                i=j=0;
-                while(string.Compare(from,PointsNames[i],true)!=0){++i;}
-                while(string.Compare(to,PointsNames[j],true)!=0){++j;}
-                return OptimalWays[i][j];
-            }
-            else
-            {
-            } //Сделать вывод что между from и to нет путей сообщения данным транспортом         
-        }
-
-        /*protected void FillIncidenceMatrix()//Как сделать так чтобы в наследниках в итоге была одна и та же матрица смежности?(IncidenceMatrix)
-        {
-            Matrix.rand(ref IncidenceMatrix);
-        }*/
-        private void readMapFromFile(string path)
+        }           
+        private override void readMapFromFile(string path)
         {
             System.IO.StreamReader file = new System.IO.StreamReader(path);
             string names = file.ReadLine();
@@ -252,8 +369,28 @@ namespace Лаба1
                 IncidenceMatrix[i] = Array.ConvertAll(values, element => Convert.ToDouble(element));//менять convert на tryparse
             }
         }
+        //True если можно добраться из пункта А в пункт Б и False иначе
+        public override bool Communicate(string from, string to)
+        {
+            bool flag1, flag2;
+            flag1 = flag2 = false;
+            //Сравниваем есть ли на данной карте связь двух пунктов
+            for (int i = 0; i < PointsNames.Length; ++i)
+            {   
+                if (from == PointsNames[i])
+                {
+                    flag1 = true;
+                }
+                if (to == PointsNames[i])
+                {
+                    flag2 = true;
+                }
+            }
+            if (flag1 && flag2) { return true; }
+            else { return false; }
+        }
         
-
+        
         private void CalcOptimalWays(double[][] IncidenceMatrix)//Что делать. Ведь я получаю ссылку на матрицу в map. Но я получчается меняю её здесь. Допустимо ли это?
         {
             double[][] tempMatr = new double[IncidenceMatrix.Length][];
@@ -280,165 +417,37 @@ namespace Лаба1
                 }
             }
         }
-    }
-    public class AirCalc : Calculation//Продумать какую систему координат и как использовать. Центр отправки в 0,0 или существует много центров отправки
-    {
-        //Делать enum городов 
-        private string[] PointsNames;
-        static private double[][] DistanceMatrix;//Квадратная симметричная относительно диагонали матрица.
-        static private List<Point> Points=new List<Point>();
-        public AirCalc(string mapPath)
+        public double Distance(string from, string to)
         {
-            readMapFromFrile(mapPath);//можно вызывать эти ф-ции и в cost
-            InitDistanceMatrix();                        
-        }
-        private void readMapFromFrile(string mapPath)//В файле 1 строка- 1 пункт. 1-название 2-х 3-у. Читаю в RecordParts, заношу в List<Point> Points
-        {
-            System.IO.StreamReader file = new System.IO.StreamReader(mapPath);
-            string names = file.ReadLine();            
-            string Record;
-            while ((Record = file.ReadLine())!=null)
-            {
-                string[] RecordParts=Record.Split(new char[]{' ','\t'});
-                double x;
-                double.TryParse(RecordParts[1],out x);//Можно вставить проверки удачно ли считалось
-                double y;
-                double.TryParse(RecordParts[2],out y);
-                Points.Add(new Point(RecordParts[0],x,y));
-            }            
-        }
-        private void InitDistanceMatrix()//Заполнение матрицы расстояний по координатам по прямым
-        {
-            for (int i = 0; i < Points.Count; ++i)
-            {
-                for (int j = 0; j < Points.Count; ++j)
-                {
-                    DistanceMatrix[i][j] = Math.Sqrt(Math.Pow(Points[i].x - Points[j].x, 2) + Math.Pow(Points[i].y - Points[j].y, 2));
-                }
-            }
-        }
-        public static double cost(string from,string to)
-        {
-            Points.
-            return DistanceMatrix[]
+            int i, j;
+            i = j = 0;
+            while (string.Compare(from, PointsNames[i], true) != 0) { ++i; }
+            while (string.Compare(to, PointsNames[j], true) != 0) { ++j; }
+            return OptimalWays[i][j];
         }
     }
-    class Deliverer
-    {
-        protected double cost;
-        double time;
-    }
-    class Truck : Deliverer
-    {
-
-        public void Cost(int from, int to)
-        {
-            cost = RoadCalc.cost(from, to);
-        }
-    }
-    class Quadracopter : Deliverer
-    {
-        public void Cost(double x, double y)
-        {       8888
-            cost = AirCalc.cost(x, y);
-        }
-    }
-    class Matrix
-    {
-        public static void rand(ref int[,] a)
-        {
-            Random rand1 = new Random();
-            for (int i = 0; i < a.GetLength(0); ++i)
-            {
-                for (int j = 0; j < a.GetLength(1); ++j)
-                {
-                    a[i, j] = rand1.Next(51);
-                }
-            }
-
-        }
-
-    }
-
-    class Point
-    {
-        public string Name { get; set; }//Наименование Пункта
-        //public string runwayType { get; set; }//Делать в алгоритме проверку карты на наличие дороги и аэропорта в пункте назначения
-        public double x { get; set; }
-        public double y { get; set; }
-        public Point(string Name,double x,double y)
-        {
-            this.Name = Name;
-            this.x = x;
-            this.y = y;
-        }
-    }
-    //Запихнул в Calculation ибо не вижу смысла в этом классе (Map)
-    /*class Map//
-    {
-        //пункты доставки. Хранятся первой строчкой в файле
-        public string[] points { get; set; }
-        public double[][] IncidenceMatrix;
-        public Map(string path)//Ввод карты из файла
-        {
-            System.IO.StreamReader file = new System.IO.StreamReader(path);
-            string names = file.ReadLine();
-            //Разделяем строчку на названия пунктов
-            points = names.Split(new char[] { ' ', ',', '\t' });
-            IncidenceMatrix = new double[points.Length][];
-            for (int i = 0; i < points.Length; ++i)
-            {
-                //Читаю строку, делю по пробелам, перевожу в double и заношу в матрицу IncidenceMatrix
-                string line = file.ReadLine();
-                string[] values = line.Split(new char[] { ' ' });
-                IncidenceMatrix[i] = Array.ConvertAll(values, element => Convert.ToDouble(element));//менять convert на tryparse
-            }
-        }
-        //True если можно добраться из пункта А в пункт Б и False иначе
-        public virtual bool Communicate(Point from, Point to)
-        {
-            bool flag1, flag2;
-            flag1 = flag2 = false;
-            //Сравниваем есть ли на данной карте связь двух пунктов
-            for (int i = 0; i < points.Length; ++i)
-            {   
-                if (from.Name == points[i])
-                {
-                    flag1 = true;
-                }
-                if (to.Name == points[i])
-                {
-                    flag2 = true;
-                }
-            }
-            if (flag1 && flag2) { return true; }
-            else { return false; }
-        }
-    }*/
 
     class Transport
     {
         public string vehicleModel { get; set; }
-        public double weight { get; set; }
+        //public double weight { get; set; }
         public int peopleQuantity { get; set; }
         public string oilType { get; set; }
         public double fuelConsumption { get; set; }
-        abstract double cost();//Для самолётов стоимость взлёта+посадки+путь,для остальных только путь
+        //public double time { get; set; }//Или делать просто методом
+        public abstract double cost();//Для самолётов стоимость взлёта+посадки+путь,для остальных только путь
         //abstract void move(Point from, Point to);
         //abstract void Repair();//На перспективу. Ремонт зависит от километража. Ремонт сбрасывает километраж на 0
         //можно добавить счётчик
+        public Transport()
+        {
+            //Делать ввод откуда-нибудь параметров
+        }
     }
-    class AirTransport : Transport
-    {
-        //public string takeoffMethod { get; set; }
-
-        public double FlyingHours { get; set; }
-    }
-    class Plane : AirTransport
+    class Plane : Transport
     {
         public string runwayType { get; set; }
         public DayOfWeek weekDay { get; set; }
-
         public void getMealMenu()
         {
 
@@ -446,47 +455,144 @@ namespace Лаба1
         public void ExtraInfo()//в экстраинфо заношу методы
         {
             getMealMenu();
+            //Время полёта, высота полёта, vehicleModel
         }
 
-        public override double cost(Point from, Point to, double[,] map)
+        public override double cost(string from, string to,string mapPath)
         {
-            string mapPath;//Куда всунуть path или саму map. В параметры cost или локальными переменными cost?
-            AirCalc counter = new AirCalc(mapPath);//Сделать конструктор Aircalc(Map )
-            return AirCalc.cost()
+            //string mapPath;//Куда всунуть path или саму map. В параметры cost или локальными переменными cost?
+            AirMap map = new AirMap(mapPath);//Сделать конструктор Aircalc(Map )
+            double distance;
+            double price;
+            if (map.Communicate(from, to,runwayType))
+            {
+                distance=map.Distance(from, to);
+            }
+            else { ..}
+            OilPrices prices=new OilPrices();
+            price=prices.getPrice(oilType);
+            return fuelConsumption*price/peopleQuantity;//Можно добавить +luggage+takeoff+посадка
+
         }
     }
-    class Hellicopter : AirTransport//Не придумал полей
+    class Hellicopter : Transport//Не придумал полей
+    {
+        public void ExtraInfo()
+        {
+
+        }
+        
+    }
+    class Car : Transport
+    {
+        //public double tonns { get; set; }
+        //public double mileage { get; set; }//Километраж
+    }
+    class Train : Transport
+    {
+        
+        int seatPlace;
+        double seatPlacePrice;
+        int platzkart;
+        double platzkartPrice;
+        int compartment;//купе
+        double compartmentPrice;//Хз где задавать.В конструкторе через функцию считывания или ещё чё
+        private void SoldTickets()//Считывается из файла 1-тип билета(сидячий, платцкарт,купе),2 - количество. Файл может содержать много строчек
+        {
+            System.IO.StreamReader file = new System.IO.StreamReader("traintickets.txt");//Определить что за файл и где хранить и вообще где определять файл(в конструкторе или константой как сейчас)
+            string Record;
+            //Пока не конец файла
+            while ((Record = file.ReadLine()) != null)
+            {
+                //Делим строчку по пробелам и табам
+                string[] RecordParts = Record.Split(' ', '\t');
+                seatType ticket;
+                //смотрим соответствует ли написанное одному из 3 типов билетов
+                if (Enum.IsDefined(typeof(seatType), RecordParts[0]))
+                {
+                    Enum.TryParse<seatType>(RecordParts[0], true, out ticket);
+                    int quantity;
+                    //Добавляем данные билеты к общему числу проданных билетов
+                    if (int.TryParse(RecordParts[1], out quantity))
+                    {
+                        if (ticket.HasFlag(seatType.seatPlace))
+                        {
+                            seatPlace += quantity;
+                        }
+                        else if (ticket.HasFlag(seatType.seatPlace))
+                        {
+                            platzkart += quantity;
+                        }
+                        else { compartment += quantity; }
+                    }
+                }
+            }
+        }
+        public string ExtraInfo()
+        {
+            return getMealMenu() + getBedLinen();
+        }
+        private string getMealMenu()
+        {
+            return "The meal can be ordered by place\nor you can visit restaurant wagon";
+        }
+        private string getBedLinen()
+        {
+            return "1 bed linen set costs 10 Euro";
+        }
+        //Считает среднюю стоимость места
+        public double cost(string from,string to)
+        {
+            GraphMap map = new GraphMap("trainmap.txt");
+            if (map.Communicate(from, to))
+            {
+                return fuelConsumption * map.Distance(from, to) / (seatPlace + platzkart + compartment);
+            }
+            else
+            {
+                ..//Наверно надо return 0 или double.maxvalue и обрабатывать извне
+            }
+
+        }
+    }
+    /*class WaterTransport : Transport
+    {
+        //public double tonnage { get; set; }
+        //int Kind;//Морской/речной
+        //public double miles { get; set; }
+
+
+    }*/
+    class MotorShip : Transport//Теплоход
     {
 
     }
-    class GroundTransport : Transport
-    {
-        public double mileage { get; set; }//Километраж
-
-    }
-    class Car : GroundTransport
-    {
-        public double tonns { get; set; }
-        public double mileage { get; set; }//Километраж
-    }
-    class Train : GroundTransport
-    {
-        public int coachesQuantity { get; set; }
-    }
-    class WaterTransport : Transport
-    {
-        public double tonnage { get; set; }
-        int Kind;//Морской/речной
-        public double miles { get; set; }
-
-
-    }
-    class MotorShip : WaterTransport//Теплоход
-    {
-
-    }
-    class SpeedBoat : WaterTransport
+    class SpeedBoat : Transport
     {
 
     }
 }
+
+
+
+
+
+
+
+//Полезный код
+/*Point pt1 = Points.Find(
+            delegate(Point pt)//анонимный делегат
+            {
+                return string.Compare(pt.Name, from) == 0;
+            }
+            );
+            Point pt2 = Points.Find(
+            delegate(Point pt)
+            {
+                return string.Compare(pt.Name, to) == 0;
+            } 
+            );
+            if (pt1 != null && pt2 != null)
+            {
+                return Math.Sqrt(Math.Pow(pt1.x - pt2.x, 2) + Math.Pow(pt1.y - pt2.y, 2));
+            }*/
