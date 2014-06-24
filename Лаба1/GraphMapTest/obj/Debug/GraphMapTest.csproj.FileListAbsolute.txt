@@ -1,0 +1,7 @@
+C:\Users\Julia1\Desktop\Женя\Лаба1\GraphMapTest\bin\Debug\GraphMapTest.dll
+C:\Users\Julia1\Desktop\Женя\Лаба1\GraphMapTest\bin\Debug\GraphMapTest.pdb
+C:\Users\Julia1\Desktop\Женя\Лаба1\GraphMapTest\bin\Debug\Лаба1о.exe
+C:\Users\Julia1\Desktop\Женя\Лаба1\GraphMapTest\bin\Debug\Лаба1о.pdb
+C:\Users\Julia1\Desktop\Женя\Лаба1\GraphMapTest\obj\Debug\GraphMapTest.csprojResolveAssemblyReference.cache
+C:\Users\Julia1\Desktop\Женя\Лаба1\GraphMapTest\obj\Debug\GraphMapTest.dll
+C:\Users\Julia1\Desktop\Женя\Лаба1\GraphMapTest\obj\Debug\GraphMapTest.pdb
