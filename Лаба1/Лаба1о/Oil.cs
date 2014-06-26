@@ -6,32 +6,49 @@ using System.Threading.Tasks;
 
 namespace Лаба1
 {
+    /// <summary>
+    /// Описание вида топлива
+    /// </summary>
     public class Oil
     {
         public string Name { get; set; }
         public double Price { get; set; }
+        /// <summary>
+        /// Инициализирует экземпляр Лаба1.Oil
+        /// </summary>
+        /// <param name="Name">Наименование топлива</param>
+        /// <param name="Price">Цена</param>
         public Oil(string Name, double Price)
         {
             this.Name = Name;
             this.Price = Price;
         }
     }
-    public class OilPrices//Или куда-то ещё закинуть List  с ценами топлива?
+    /// <summary>
+    /// Цены на разные виды топлива
+    /// </summary>
+    public static class OilPrices//Или куда-то ещё закинуть List  с ценами топлива?
     {
-        private string priceSource { get; set; }
-        private List<Oil> Oils = new List<Oil>();//Можно переделать с индексатором чтобы без точки сразу к List обращаться
-        public OilPrices()
+        private static List<Oil> Oils = new List<Oil>();//Можно переделать с индексатором чтобы без точки сразу к List обращаться
+        /// <summary>
+        /// Инициализирует новый экземпляр Лаба1.OilPrices
+        /// </summary>
+        static OilPrices()
         {
-            priceSource = "input.txt";
-            readPrices(priceSource);//input.txt файл с ценами на топливо
+            readPrices(FilesDirectories.OilPricesDirectory);//input.txt файл с ценами на топливо
         }
-        private void readPrices(string priceSource)
+        /// <summary>
+        /// Считывает цены на разные виды топлива из указанного файла
+        /// </summary>
+        /// <param name="priceSource">Путь к файлу</param>
+        /// <exception cref="System.Exception">Ошибка в файле данных</exception>"
+        private static void readPrices(string priceSource)//Цены записаны 1 строка-1 топливо. Название, цена
         {
             System.IO.StreamReader file = new System.IO.StreamReader(priceSource);
             string Record;
             while ((Record = file.ReadLine()) != null)
             {
-                string[] RecordParts = Record.Split(new char[] { ' ', '\t' });
+                string[] RecordParts = Record.Split(new char[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries);
                 double x;
                 if (!double.TryParse(RecordParts[1], out x))//Можно вставить проверки удачно ли считалось + проверка названия топлива. Можно сделать перечень существующих видов топлива в виде enum и сравнивать с ним                
                 {
@@ -40,15 +57,25 @@ namespace Лаба1
                 Oils.Add(new Oil(RecordParts[0], x));
             }
         }
-        public double getPrice(string oilType)
+        /// <summary>
+        /// Получает цену на указанный вид топлива Лаба1.oilType
+        /// </summary>
+        /// <param name="oilType"></param>
+        /// <returns></returns>
+        /// <exception cref="System.Exception">Информация о топливе не найдена</exception>"
+        public static double getPrice(string oilType)
         {
             Oil oil1 = Oils.Find(
             delegate(Oil oil)
             {
-                return string.Compare(oil.Name, oilType) == 0;
+                return string.Compare(oil.Name, oilType, true) == 0;
             }
             );
-            return oil1.Price;
+            if (oil1 != null)
+            {
+                return oil1.Price;
+            }
+            else throw new Exception("Oil info was not found");
         }
 
     }

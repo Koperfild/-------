@@ -2,8 +2,8 @@ C:\Users\Julia1\Desktop\Женя\Лаба1\Лаба1о\obj\Debug\Лаба1.cspro
 C:\Users\Julia1\Desktop\Женя\Лаба1\Лаба1о\obj\Debug\Лаба1.Properties.Resources.resources
 C:\Users\Julia1\Desktop\Женя\Лаба1\Лаба1о\obj\Debug\Лаба1.csproj.GenerateResource.Cache
 C:\Users\Julia1\Desktop\Женя\Лаба1\Лаба1о\bin\Debug\Лаба1о.exe.config
-C:\Users\Julia1\Desktop\Женя\Лаба1\Лаба1о\obj\Debug\Лаба1.Form1.resources
 C:\Users\Julia1\Desktop\Женя\Лаба1\Лаба1о\bin\Debug\Лаба1о.exe
 C:\Users\Julia1\Desktop\Женя\Лаба1\Лаба1о\bin\Debug\Лаба1о.pdb
 C:\Users\Julia1\Desktop\Женя\Лаба1\Лаба1о\obj\Debug\Лаба1о.exe
 C:\Users\Julia1\Desktop\Женя\Лаба1\Лаба1о\obj\Debug\Лаба1о.pdb
+C:\Users\Julia1\Desktop\Женя\Лаба1\Лаба1о\obj\Debug\Лаба1.Form1.resources

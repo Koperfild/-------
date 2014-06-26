@@ -10,7 +10,7 @@ namespace Лаба1
     {
         public string vehicleModel { get; set; }
         //public double weight { get; set; }
-        public int peopleQuantity { get; set; }
+        protected abstract int ticketsQuantity { get; }
         public string oilType { get; set; }
         public double fuelConsumption { get; set; }
         //public double time { get; set; }//Или делать просто методом
@@ -22,83 +22,17 @@ namespace Лаба1
         {
             //Делать ввод откуда-нибудь параметров
         }
-    }
-    class AirTransport : Transport
-    {
-        //public DayOfWeek weekDay { get; set; }
-
-        public override double cost(string from, string to)
+        /// <summary>
+        /// Количество проданных билетов
+        /// </summary>
+        /// <param name="soldTicketsFile">Путь к файлу с проданными билетами</param>
+        /// <returns></returns>
+        /// <exception cref="System.Exception">Некорретные данные в файле</exception>"
+        public virtual int SoldTickets(string soldTicketsFile)
         {
-            //string mapPath;//Куда всунуть path или саму map. В параметры cost или локальными переменными cost?
-            FilesDirectories files = new FilesDirectories();
-            AirMap map = new AirMap(files.AirMapDirectory);
-            double distance;
-            double price;
-            /*if (map.Communicate(from, to))
-            {
-                distance=map.Distance(from, to);
-            }*/
-            try
-            {
-                distance = map.Distance(from, to);
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            OilPrices prices=new OilPrices();
-            price=prices.getPrice(oilType);
-            return fuelConsumption*price*distance/peopleQuantity;//Можно добавить +luggage+takeoff+посадка
-
-        }
-    }
-    class GroundTransport : Transport
-    {
-        //Проданные билеты
-        /*int seatPlace;
-        double seatPlacePrice;
-        int platzkart;
-        double platzkartPrice;
-        int compartment;//купе
-        double compartmentPrice;//Хз где задавать.В конструкторе через функцию считывания или ещё чё
-         */
-        /*private void SoldTickets()//Считывается из файла 1-тип билета(сидячий, платцкарт,купе),2 - количество. Файл может содержать много строчек
-        {
-            System.IO.StreamReader file = new System.IO.StreamReader("traintickets.txt");//Определить что за файл и где хранить и вообще где определять файл(в конструкторе или константой как сейчас)
-            string Record;
-            //Пока не конец файла
-            while ((Record = file.ReadLine()) != null)
-            {
-                //Делим строчку по пробелам и табам
-                string[] RecordParts = Record.Split(' ', '\t');
-                seatType ticket;
-                //смотрим соответствует ли написанное одному из 3 типов билетов
-                if (Enum.IsDefined(typeof(seatType), RecordParts[0]))
-                {
-                    Enum.TryParse<seatType>(RecordParts[0], true, out ticket);
-                    int quantity;
-                    //Добавляем данные билеты к общему числу проданных билетов
-                    if (int.TryParse(RecordParts[1], out quantity))
-                    {
-                        if (ticket.HasFlag(seatType.seatPlace))
-                        {
-                            seatPlace += quantity;
-                        }
-                        else if (ticket.HasFlag(seatType.seatPlace))
-                        {
-                            platzkart += quantity;
-                        }
-                        else { compartment += quantity; }
-                    }
-                }
-            }
-        }*/
-        private int SoldTickets()
-        {
-            FilesDirectories files = new FilesDirectories();
-            System.IO.StreamReader file = new System.IO.StreamReader(files.GroundTransportTicketsDirectory);
+            System.IO.StreamReader file = new System.IO.StreamReader(soldTicketsFile);
             string line;
-            line=file.ReadLine();
+            line = file.ReadLine();
             int soldtickets;
             if (!int.TryParse(line, out soldtickets))
             {
@@ -106,14 +40,117 @@ namespace Лаба1
             }
             return soldtickets;
         }
-        //Считает среднюю стоимость места
-        public override double cost(string from,string to)
+    }
+    /// <summary>
+    /// Воздушный транспорт
+    /// </summary>
+    class AirTransport : Transport
+    {
+        protected override int ticketsQuantity
         {
-            FilesDirectories files = new FilesDirectories();
-            GraphMap map = new GraphMap(files.GraphMapDirectory);
+            get
+            {
+                try
+                {
+                    System.IO.StreamReader file = new System.IO.StreamReader(FilesDirectories.AirTransportTicketsDirectory);
+                    return Convert.ToInt32(file.ReadLine());
+                }
+                catch (Exception)
+                {
+                    throw new Exception("Incorrect data in file");
+                }
+            }
+        }
+        /// <summary>
+        /// Инициализирует новый экземпляр Лаба1.AirTransport и устанавливает характеристики указанного транспортного средства
+        /// </summary>
+        /// <param name="vehicleModel"></param>
+        /// <exception cref="System.Exception">Ошибка считывания характеристик из файла</exception>"
+        public AirTransport(string vehicleModel)//Можно передавать модель самолёта. И откуда то брать его расход топлива
+        {
             try
             {
-                return fuelConsumption * map.Distance(from, to) / SoldTickets();
+                readCharacteristicsFromFile(vehicleModel);
+            }
+            catch (Exception)
+            {
+                throw new Exception("Error reading vehicle characteristics from file");
+            }
+        }
+        /// <summary>
+        /// Считывание характеристик транспорта из файла
+        /// </summary>
+        /// <param name="vehicleModel"></param>
+        /// <exception cref="System.Exception">Ошибка в файле характеристик</exception>"
+        protected void readCharacteristicsFromFile(string vehicleModel)
+        {
+            System.IO.StreamReader file = new System.IO.StreamReader(FilesDirectories.vehicleCharacteristics);
+            string Record;
+            string[] RecordParts;
+            bool flag = false;//Нашли нужный нам самолёт
+            while ((Record = file.ReadLine()) != null && !flag)
+            {
+                RecordParts = Record.Split(new char[] { ' ', ',', '\t' }, StringSplitOptions.RemoveEmptyEntries);
+                if (RecordParts[0] == vehicleModel)
+                {
+                    try
+                    {
+                        oilType = Convert.ToString(RecordParts[1]);
+                        fuelConsumption = Convert.ToDouble(RecordParts[2]);
+                    }
+                    catch (Exception)
+                    {
+                        throw new Exception("Incorrect data in vehicleCharacteristics file");
+                    }
+                }
+            }
+        }
+        /// <summary>
+        /// Расчёт стоимости проезда из пункта 1 в пункт 2
+        /// </summary>
+        /// <param name="from">Откуда</param>
+        /// <param name="to">Куда</param>
+        /// <returns>Стоимость</returns>
+        /// <exception cref="System.Exception">Ошибка расчёта расстояния между пунктами</exception>"
+
+        public override double cost(string from, string to)
+        {
+            //string mapPath;//Куда всунуть path или саму map. В параметры cost или локальными переменными cost?
+            AirMap map = new AirMap(FilesDirectories.AirMapDirectory);
+            double distance;
+            try
+            {
+                distance = map.Distance(from, to);
+            }
+            catch (Exception)
+            {
+                throw new Exception("2 airports doesn't communicate");
+            }
+            return fuelConsumption*OilPrices.getPrice(oilType)*distance/ticketsQuantity;//Можно добавить +luggage+takeoff+посадка
+
+        }
+    }
+    /// <summary>
+    /// Наземный транспорт
+    /// </summary>
+    class GroundTransport : Transport
+    {
+        protected override int ticketsQuantity{ get{return 20;}}
+        /// <summary>
+        /// Считает стоимость 1 билета
+        /// </summary>
+        /// <param name="from">Откуда</param>
+        /// <param name="to">Куда</param>
+        /// <returns>Цена билета</returns>
+        /// <exception cref="System.Exception">Ошибка расчёта расстояния или ошибка считывания количества проданных билетов из файла</exception>"
+        public override double cost(string from,string to)
+        {
+            GraphMap map = new GraphMap(FilesDirectories.GraphMapDirectory);
+            double fuelprice = OilPrices.getPrice("Уголь");
+            fuelConsumption = 33;
+            try
+            {
+                return fuelConsumption * fuelprice * map.Distance(from, to) / SoldTickets(FilesDirectories.GroundTransportTicketsDirectory);
             }
             catch(Exception)
             {
@@ -121,8 +158,18 @@ namespace Лаба1
             }
         }
     }
+    /// <summary>
+    /// Водный транспорт
+    /// </summary>
     class WaterTranport : Transport//Теплоход
     {
+        protected override int ticketsQuantity { get { return 20; } }
+        /// <summary>
+        /// Расчёт стоимости 1 билета из одного пункта в другой
+        /// </summary>
+        /// <param name="from">Откуда</param>
+        /// <param name="to">Куда</param>
+        /// <returns></returns>
         public override double cost(string from, string to)
         {
             return 3;

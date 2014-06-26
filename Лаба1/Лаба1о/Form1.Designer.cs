@@ -28,33 +28,147 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.citiesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.citiesBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.fromLabel = new System.Windows.Forms.Label();
+            this.toLabel = new System.Windows.Forms.Label();
+            this.PriceDGW = new System.Windows.Forms.DataGridView();
+            this.executeButton = new System.Windows.Forms.Button();
+            this.AirTransport = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GroundTransport = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.WaterTransport = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.citiesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.citiesBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PriceDGW)).BeginInit();
             this.SuspendLayout();
             // 
             // comboBox1
             // 
+            this.comboBox1.DataSource = this.citiesBindingSource;
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(80, 117);
+            this.comboBox1.Location = new System.Drawing.Point(65, 73);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 24);
             this.comboBox1.TabIndex = 0;
+            // 
+            // citiesBindingSource
+            // 
+            this.citiesBindingSource.DataSource = typeof(Лаба1.Cities);
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.DataSource = this.citiesBindingSource1;
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(219, 73);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(121, 24);
+            this.comboBox2.TabIndex = 1;
+            // 
+            // citiesBindingSource1
+            // 
+            this.citiesBindingSource1.DataSource = typeof(Лаба1.Cities);
+            // 
+            // fromLabel
+            // 
+            this.fromLabel.AutoSize = true;
+            this.fromLabel.Location = new System.Drawing.Point(109, 30);
+            this.fromLabel.Name = "fromLabel";
+            this.fromLabel.Size = new System.Drawing.Size(36, 17);
+            this.fromLabel.TabIndex = 2;
+            this.fromLabel.Text = "from";
+            // 
+            // toLabel
+            // 
+            this.toLabel.AutoSize = true;
+            this.toLabel.Location = new System.Drawing.Point(216, 30);
+            this.toLabel.Name = "toLabel";
+            this.toLabel.Size = new System.Drawing.Size(20, 17);
+            this.toLabel.TabIndex = 3;
+            this.toLabel.Text = "to";
+            // 
+            // PriceDGW
+            // 
+            this.PriceDGW.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.PriceDGW.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.AirTransport,
+            this.GroundTransport,
+            this.WaterTransport});
+            this.PriceDGW.Location = new System.Drawing.Point(65, 163);
+            this.PriceDGW.Name = "PriceDGW";
+            this.PriceDGW.RowTemplate.Height = 24;
+            this.PriceDGW.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.PriceDGW.Size = new System.Drawing.Size(587, 119);
+            this.PriceDGW.TabIndex = 4;
+            // 
+            // executeButton
+            // 
+            this.executeButton.Location = new System.Drawing.Point(161, 117);
+            this.executeButton.Name = "executeButton";
+            this.executeButton.Size = new System.Drawing.Size(85, 23);
+            this.executeButton.TabIndex = 5;
+            this.executeButton.Text = "Calculate";
+            this.executeButton.UseVisualStyleBackColor = true;
+            this.executeButton.Click += new System.EventHandler(this.executeButton_Click);
+            // 
+            // AirTransport
+            // 
+            this.AirTransport.HeaderText = "AirTransport";
+            this.AirTransport.Name = "AirTransport";
+            this.AirTransport.ReadOnly = true;
+            this.AirTransport.Width = 133;
+            // 
+            // GroundTransport
+            // 
+            this.GroundTransport.HeaderText = "GroundTransport";
+            this.GroundTransport.Name = "GroundTransport";
+            this.GroundTransport.ReadOnly = true;
+            this.GroundTransport.Width = 133;
+            // 
+            // WaterTransport
+            // 
+            this.WaterTransport.HeaderText = "WaterTransport";
+            this.WaterTransport.Name = "WaterTransport";
+            this.WaterTransport.ReadOnly = true;
+            this.WaterTransport.Width = 133;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(683, 389);
+            this.Controls.Add(this.executeButton);
+            this.Controls.Add(this.PriceDGW);
+            this.Controls.Add(this.toLabel);
+            this.Controls.Add(this.fromLabel);
+            this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.comboBox1);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.citiesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.citiesBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PriceDGW)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.BindingSource citiesBindingSource;
+        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.Label fromLabel;
+        private System.Windows.Forms.Label toLabel;
+        private System.Windows.Forms.BindingSource citiesBindingSource1;
+        private System.Windows.Forms.DataGridView PriceDGW;
+        private System.Windows.Forms.Button executeButton;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AirTransport;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GroundTransport;
+        private System.Windows.Forms.DataGridViewTextBoxColumn WaterTransport;
 
     }
 }
