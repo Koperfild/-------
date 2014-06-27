@@ -52,7 +52,7 @@ namespace Лаба1
             {
                 try
                 {
-                    System.IO.StreamReader file = new System.IO.StreamReader(FilesDirectories.AirTransportTicketsDirectory);
+                    System.IO.StreamReader file = new System.IO.StreamReader(FilesDirectories.AirTransportTickets);
                     return Convert.ToInt32(file.ReadLine());
                 }
                 catch (Exception)
@@ -116,7 +116,7 @@ namespace Лаба1
         public override double cost(string from, string to)
         {
             //string mapPath;//Куда всунуть path или саму map. В параметры cost или локальными переменными cost?
-            AirMap map = new AirMap(FilesDirectories.AirMapDirectory);
+            AirMap map = new AirMap(FilesDirectories.AirMap);
             double distance;
             try
             {
@@ -145,12 +145,12 @@ namespace Лаба1
         /// <exception cref="System.Exception">Ошибка расчёта расстояния или ошибка считывания количества проданных билетов из файла</exception>"
         public override double cost(string from,string to)
         {
-            GraphMap map = new GraphMap(FilesDirectories.GraphMapDirectory);
+            GraphMap map = new GraphMap(FilesDirectories.GraphMap);
             double fuelprice = OilPrices.getPrice("Уголь");
             fuelConsumption = 33;
             try
             {
-                return fuelConsumption * fuelprice * map.Distance(from, to) / SoldTickets(FilesDirectories.GroundTransportTicketsDirectory);
+                return fuelConsumption * fuelprice * map.Distance(from, to) / SoldTickets(FilesDirectories.GroundTransportTickets);
             }
             catch(Exception)
             {

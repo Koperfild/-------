@@ -35,7 +35,7 @@ namespace Лаба1
         /// </summary>
         static OilPrices()
         {
-            readPrices(FilesDirectories.OilPricesDirectory);//input.txt файл с ценами на топливо
+            readPrices(FilesDirectories.OilPrices);//input.txt файл с ценами на топливо
         }
         /// <summary>
         /// Считывает цены на разные виды топлива из указанного файла

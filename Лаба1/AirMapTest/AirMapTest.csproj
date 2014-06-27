@@ -3,11 +3,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D61E9B8E-8F01-4EEE-9F1D-DDDAAF4EEA87}</ProjectGuid>
+    <ProjectGuid>{160297EA-0063-4B35-AE30-30AD4ECE5D25}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Test</RootNamespace>
-    <AssemblyName>GraphMapTest</AssemblyName>
+    <RootNamespace>AirMapTest</RootNamespace>
+    <AssemblyName>AirMapTest</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -50,11 +50,11 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Test_readMapFromFile.cs" />
-    <Compile Include="Test_BuildGroundRace.cs" />
+    <Compile Include="Test_BuildAirRace.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Test_Communicate.cs" />
-    <Compile Include="Test_CalcOptimalWays.cs" />
+    <Compile Include="Test_Distance.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Лаба1о\Лаба1.csproj">

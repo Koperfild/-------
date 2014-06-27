@@ -24,7 +24,7 @@ namespace Лаба1
         public void readCities()
         {
             CitiesList = new List<string>();
-            System.IO.StreamReader file = new System.IO.StreamReader(FilesDirectories.AirMapDirectory);
+            System.IO.StreamReader file = new System.IO.StreamReader(FilesDirectories.AirMap);
             string City;
             //Считывание Аэропортов
             while ((City = file.ReadLine()) != null)
@@ -34,7 +34,7 @@ namespace Лаба1
             }
             file.Close();
             //Считывание Городов с графовой карты
-            file = new System.IO.StreamReader(FilesDirectories.GraphMapDirectory);
+            file = new System.IO.StreamReader(FilesDirectories.GraphMap);
             string[] GroundCities;
             GroundCities = file.ReadLine().Split(new char[] { ' ', '\t', ',', ';' }, StringSplitOptions.RemoveEmptyEntries);
             file.Close();

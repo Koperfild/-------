@@ -28,7 +28,7 @@ namespace Лаба1
             this.y = y;
         }
     }
-    abstract class Map
+    abstract public class Map
     {
         public abstract bool Communicate(string from, string to);
 
@@ -53,7 +53,7 @@ namespace Лаба1
     /// <summary>
     /// Реализует методы Map. Определяет расстояние и связь 2-х городов по воздушной карте
     /// </summary>
-    class AirMap : Map
+    public class AirMap : Map
     {
         static private List<AirPort> Points = new List<AirPort>();
         //private static double[][] DistanceMatrix;
@@ -70,9 +70,10 @@ namespace Лаба1
             }
             catch (Exception)
             {
-                throw new Exception("Error reading map from file");
+                throw new Exception(ErrorReadingMapFromFile);
             }
         }
+        public static string ErrorReadingMapFromFile = "Error reading map from file";
         /// <summary>
         /// Считывает воздушную карту из файла
         /// </summary>
@@ -95,10 +96,11 @@ namespace Лаба1
                 }
                 catch (Exception)
                 {
-                    throw new Exception("Error reading map from file");
+                    throw new Exception(ErrorReadingMapFromFile);
                 }
             }
         }
+        public static string AirportsDoesntCommunicate ="Airports are not connected";
         /// <summary>
         /// Проверяет есть ли авиасообщение между 2-мя пунктами и в случае успеха возвращает Лаба1.AirRace
         /// </summary>
@@ -125,7 +127,7 @@ namespace Лаба1
             {
                 return new AirRace(pt1, pt2);
             }
-            else throw new Exception("Airports are not connected");
+            else throw new Exception(AirportsDoesntCommunicate);
         }
         /// <summary>
         /// Проверяет наличие авиасообщения между 2-мя пунктами
@@ -161,7 +163,7 @@ namespace Лаба1
             }
             catch (Exception)
             {
-                throw;
+                throw new Exception(AirMap.AirportsDoesntCommunicate);
             }
         }
     }
@@ -186,17 +188,20 @@ namespace Лаба1
     /// <summary>
     /// Карта-граф
     /// </summary>
-    class GraphMap : Map
+    public class GraphMap : Map
     {
         //protected const double inf = double.MaxValue;//Бесконечность для алгоритма
         protected double[][] OptimalWays;//Для static понадобится public?
         protected double[][] IncidenceMatrix;
         private string[] PointsNames { get; set; }//пункты доставки. Хранятся первой строчкой в файле 
+        public static string ErrorReadFile = "Error reading file";
+        public static string TooBigValueInFile = "Too big read Value";
         /// <summary>
         /// Инициализирует новый экземпляр Лаба1.GraphMap с указанием пути граф-карты
         /// </summary>
         /// <param name="mapPath">Путь к файлу граф-карты</param>
-        /// <exception cref="System.Exception">В файле карты неверные данные</exception>"
+        /// <exception cref="System.FormatException">В файле карты неверный формат данных</exception>"
+        /// <exception cref="System.OverflowException">Слишком большое число в файле</exception>"
         public GraphMap(string mapPath)
         {
             try
@@ -206,13 +211,14 @@ namespace Лаба1
             }
             catch (FormatException)
             {
-                throw new Exception("Error reading GraphMap");
+                throw new FormatException(GraphMap.ErrorReadFile);
             }
             catch (OverflowException)
             {
-                throw new Exception("Too big read value");
+                throw new OverflowException(GraphMap.TooBigValueInFile);
             }
         }
+        public static string InternalErrorFileReading = "Internal error reading file";
         /// <summary>
         /// Считывание граф-карты из файла
         /// </summary>
@@ -230,20 +236,26 @@ namespace Лаба1
                 //Читаю строку, делю по пробелам, перевожу в double и заношу в матрицу IncidenceMatrix
                 string line = file.ReadLine();
                 string[] values = line.Split(new char[] { ' ','\t' },StringSplitOptions.RemoveEmptyEntries);
+                if (values == null) { --i; continue; }//Случай пустых строчек между именем.Уменьшаем счётчик за фальшивую строчку
                 try
                 {
                     IncidenceMatrix[i] = Array.ConvertAll(values, element => Convert.ToDouble(element));
                 }
+                catch (ArgumentNullException)
+                {
+                    throw new ArgumentNullException(InternalErrorFileReading);
+                }
                 catch (FormatException)
                 {
-                    throw new Exception("Incorrect data in file");
+                    throw new FormatException(ErrorReadFile);
                 }
                 catch (OverflowException)
                 {
-                    throw new Exception("Too big read value");
+                    throw new OverflowException(TooBigValueInFile);
                 }
             }
         }
+        public static string PointsDoesntCommunicate ="2 points doesn't communicate";
         //True если можно добраться из пункта А в пункт Б и False иначе
         /// <summary>
         /// Проверяет есть ли наземное сообщение и возвращает Лаба1.GroundRace
@@ -274,7 +286,7 @@ namespace Лаба1
             {
                 return race;
             }
-            else throw new Exception("2 points doesn't communicate");
+            else throw new Exception(PointsDoesntCommunicate);
         }
         /// <summary>
         /// Проверяет есть ли наземное сообщение между 2-мя пунктами

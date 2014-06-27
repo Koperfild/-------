@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Лаба1", "Лаба1о\Л
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphMapTest", "GraphMapTest\GraphMapTest.csproj", "{D61E9B8E-8F01-4EEE-9F1D-DDDAAF4EEA87}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirMapTest", "AirMapTest\AirMapTest.csproj", "{160297EA-0063-4B35-AE30-30AD4ECE5D25}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{D61E9B8E-8F01-4EEE-9F1D-DDDAAF4EEA87}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D61E9B8E-8F01-4EEE-9F1D-DDDAAF4EEA87}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D61E9B8E-8F01-4EEE-9F1D-DDDAAF4EEA87}.Release|Any CPU.Build.0 = Release|Any CPU
+		{160297EA-0063-4B35-AE30-30AD4ECE5D25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{160297EA-0063-4B35-AE30-30AD4ECE5D25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{160297EA-0063-4B35-AE30-30AD4ECE5D25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{160297EA-0063-4B35-AE30-30AD4ECE5D25}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

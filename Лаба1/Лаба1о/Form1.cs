@@ -38,7 +38,7 @@ namespace Лаба1
             AirTransport plane = new Лаба1.AirTransport("Airbus320");
             GroundTransport train = new GroundTransport();
             WaterTranport ship = new WaterTranport();
-            GraphMap map=new GraphMap(FilesDirectories.GraphMapDirectory);//Это для проверки алгоритма кратчайшего пути в графе
+            GraphMap map=new GraphMap(FilesDirectories.GraphMap);//Это для проверки алгоритма кратчайшего пути в графе
             double distance = map.Distance(from, to);//См пред коммент
             string planecost;
             string traincost;
