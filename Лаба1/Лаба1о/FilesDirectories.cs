@@ -24,8 +24,8 @@ namespace Лаба1
         public static string Test_BuildAirRace { get; set; }
         static FilesDirectories()//Или можно откуда-то считывать все нужные файлы
         {
-            AirMap = @"AirMaps\AirMap.txt";
-            GraphMap = @"GroundMaps\GraphMap.txt";
+            AirMap = @"Maps\AirMap.txt";
+            GraphMap = @"Maps\GraphMap.txt";
             GroundTransportTickets = @"Tickets\Ground.txt";
             OilPrices = @"Prices\Oil.txt";
             vehicleCharacteristics = @"VehicleModels\Planes.txt";

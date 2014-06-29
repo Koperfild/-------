@@ -82,6 +82,7 @@ namespace Лаба1
         protected override void readMapFromFile(string mapPath)//В файле 1 строка- 1 пункт. 1-название 2-х 3-у,4-тип ВПП(runwayType). Читаю в RecordParts, заношу в List<Point> Points
         {
             System.IO.StreamReader file = new System.IO.StreamReader(mapPath);
+            file.ReadLine();
             string Record;
             while ((Record = file.ReadLine()) != null)
             {
@@ -227,6 +228,7 @@ namespace Лаба1
         protected override void readMapFromFile(string path)
         {
             System.IO.StreamReader file = new System.IO.StreamReader(path);
+            file.ReadLine();//Пропуск строки с типом карты
             string names = file.ReadLine();
             //Разделяем строчку на названия пунктов
             PointsNames = names.Split(new char[] { ' ', ',', '\t' }, StringSplitOptions.RemoveEmptyEntries);

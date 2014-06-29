@@ -19,7 +19,7 @@ namespace Лаба1
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            Cities cities=new Cities();
+            Cities cities=new Cities(FilesDirectories.AirMap,FilesDirectories.GraphMap);
             citiesBindingSource.DataSource = cities.CitiesList;
             citiesBindingSource1.DataSource = cities.CitiesList;
             PriceDGW.Rows.Add();
