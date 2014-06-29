@@ -27,22 +27,22 @@ namespace Лаба1
     /// <summary>
     /// Цены на разные виды топлива
     /// </summary>
-    public static class OilPrices//Или куда-то ещё закинуть List  с ценами топлива?
+    public class OilPrices//Или куда-то ещё закинуть List  с ценами топлива?
     {
         private static List<Oil> Oils = new List<Oil>();//Можно переделать с индексатором чтобы без точки сразу к List обращаться
         /// <summary>
         /// Инициализирует новый экземпляр Лаба1.OilPrices
         /// </summary>
-        static OilPrices()
+        public OilPrices(string oilPricesPath)
         {
-            readPrices(FilesDirectories.OilPrices);//input.txt файл с ценами на топливо
+            readPrices(oilPricesPath);
         }
         /// <summary>
         /// Считывает цены на разные виды топлива из указанного файла
         /// </summary>
         /// <param name="priceSource">Путь к файлу</param>
         /// <exception cref="System.Exception">Ошибка в файле данных</exception>"
-        private static void readPrices(string priceSource)//Цены записаны 1 строка-1 топливо. Название, цена
+        private void readPrices(string priceSource)//Цены записаны 1 строка-1 топливо. Название, цена
         {
             System.IO.StreamReader file = new System.IO.StreamReader(priceSource);
             string Record;

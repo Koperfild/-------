@@ -13,7 +13,7 @@ namespace Лаба1
     {
         public List<string> CitiesList;//Надо ли делать private и как получать доступ для datasource
         
-        public Cities()
+        public Cities(params string[] mapFiles)
         {
             readCities();
         }
@@ -21,10 +21,14 @@ namespace Лаба1
         /// Считывает названия городов из файлов карт
         /// <para>Использует пути к файлам из class FilesDirectories</para>
         /// </summary>
-        public void readCities()
+        public void readCities(params string[] mapFiles)
         {
             CitiesList = new List<string>();
             System.IO.StreamReader file = new System.IO.StreamReader(FilesDirectories.AirMap);
+            for (int i = 0; i < mapFiles.Length; ++i)
+            {
+
+            }
             string City;
             //Считывание Аэропортов
             while ((City = file.ReadLine()) != null)

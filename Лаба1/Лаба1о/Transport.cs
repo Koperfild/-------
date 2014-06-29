@@ -13,6 +13,7 @@ namespace Лаба1
         protected abstract int ticketsQuantity { get; }
         public string oilType { get; set; }
         public double fuelConsumption { get; set; }
+        public double fuelprice { get; set; }
         //public double time { get; set; }//Или делать просто методом
         public abstract double cost(string from,string to);//Для самолётов стоимость взлёта+посадки+путь,для остальных только путь
         //abstract void move(Point from, Point to);
@@ -112,6 +113,7 @@ namespace Лаба1
         /// <param name="to">Куда</param>
         /// <returns>Стоимость</returns>
         /// <exception cref="System.Exception">Ошибка расчёта расстояния между пунктами</exception>"
+        /// <exception cref="System.Exception">Ошибка чтения цен топлива из файла</exception>"
 
         public override double cost(string from, string to)
         {
@@ -126,6 +128,14 @@ namespace Лаба1
             {
                 throw new Exception("2 airports doesn't communicate");
             }
+            try
+            {
+                OilPrices oilprice = new OilPrices(FilesDirectories.OilPrices);
+            }
+            catch (Exception)
+            {
+                throw new Exception("Error reading oil prices");
+            }
             return fuelConsumption*OilPrices.getPrice(oilType)*distance/ticketsQuantity;//Можно добавить +luggage+takeoff+посадка
 
         }
@@ -135,6 +145,19 @@ namespace Лаба1
     /// </summary>
     class GroundTransport : Transport
     {
+        public GroundTransport()
+        {
+            fuelConsumption = 33;
+            try
+            {
+                OilPrices oilprices = new OilPrices(FilesDirectories.OilPrices);
+            }
+            catch (Exception)
+            {
+                throw new Exception("Eror reading oil prices from file");
+            }
+            fuelprice = OilPrices.getPrice("Уголь");
+        }
         protected override int ticketsQuantity{ get{return 20;}}
         /// <summary>
         /// Считает стоимость 1 билета
@@ -146,8 +169,6 @@ namespace Лаба1
         public override double cost(string from,string to)
         {
             GraphMap map = new GraphMap(FilesDirectories.GraphMap);
-            double fuelprice = OilPrices.getPrice("Уголь");
-            fuelConsumption = 33;
             try
             {
                 return fuelConsumption * fuelprice * map.Distance(from, to) / SoldTickets(FilesDirectories.GroundTransportTickets);
