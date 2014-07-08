@@ -10,7 +10,7 @@ namespace Лаба1
     {
         public string vehicleModel { get; set; }
         //public double weight { get; set; }
-        protected abstract int ticketsQuantity { get; }
+        protected abstract int ticketsQuantity { get; set; }
         public string oilType { get; set; }
         public double fuelConsumption { get; set; }
         public double fuelprice { get; set; }

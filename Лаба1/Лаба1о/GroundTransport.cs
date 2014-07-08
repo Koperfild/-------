@@ -14,6 +14,7 @@ namespace Лаба1
         public GroundTransport()
         {
             fuelConsumption = 33;
+            ticketsQuantity = 77;
             try
             {
                 OilPrices oilprices = new OilPrices(FilesDirectories.OilPrices);
@@ -24,7 +25,7 @@ namespace Лаба1
             }
             fuelprice = OilPrices.getPrice("Уголь");
         }
-        protected override int ticketsQuantity { get { return 20; } }
+        protected override int ticketsQuantity { get;set; }
         /// <summary>
         /// Считает стоимость 1 билета
         /// </summary>

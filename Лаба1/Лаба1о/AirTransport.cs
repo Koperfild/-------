@@ -25,6 +25,7 @@ namespace Лаба1
                     throw new Exception("Incorrect data in file");
                 }
             }
+            set { ticketsQuantity = value; }
         }
         /// <summary>
         /// Инициализирует новый экземпляр Лаба1.AirTransport и устанавливает характеристики указанного транспортного средства

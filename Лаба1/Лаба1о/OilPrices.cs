@@ -28,9 +28,10 @@ namespace Лаба1
         {
             System.IO.StreamReader file = new System.IO.StreamReader(priceSource);
             string Record;
+            string[] RecordParts;
             while ((Record = file.ReadLine()) != null)
             {
-                string[] RecordParts = Record.Split(new char[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries);
+                RecordParts = Record.Split(new char[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries);
                 double x;
                 if (!double.TryParse(RecordParts[1], out x))//Можно вставить проверки удачно ли считалось + проверка названия топлива. Можно сделать перечень существующих видов топлива в виде enum и сравнивать с ним                
                 {
@@ -55,7 +56,7 @@ namespace Лаба1
             );
             if (oil1 != null)
             {
-                return oil1.Price;
+                return oil1.Price; 
             }
             else throw new Exception("Oil info was not found");
         }

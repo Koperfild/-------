@@ -5,3 +5,10 @@ C:\Users\Julia1\Desktop\Женя\Лаба1\AirMapTest\bin\Debug\Лаба1о.pdb
 C:\Users\Julia1\Desktop\Женя\Лаба1\AirMapTest\obj\Debug\AirMapTest.csprojResolveAssemblyReference.cache
 C:\Users\Julia1\Desktop\Женя\Лаба1\AirMapTest\obj\Debug\AirMapTest.dll
 C:\Users\Julia1\Desktop\Женя\Лаба1\AirMapTest\obj\Debug\AirMapTest.pdb
+C:\Users\Julia1\Documents\GitHub\-------\Лаба1\AirMapTest\bin\Debug\AirMapTest.dll
+C:\Users\Julia1\Documents\GitHub\-------\Лаба1\AirMapTest\bin\Debug\AirMapTest.pdb
+C:\Users\Julia1\Documents\GitHub\-------\Лаба1\AirMapTest\bin\Debug\Лаба1о.exe
+C:\Users\Julia1\Documents\GitHub\-------\Лаба1\AirMapTest\bin\Debug\Лаба1о.pdb
+C:\Users\Julia1\Documents\GitHub\-------\Лаба1\AirMapTest\obj\Debug\AirMapTest.csprojResolveAssemblyReference.cache
+C:\Users\Julia1\Documents\GitHub\-------\Лаба1\AirMapTest\obj\Debug\AirMapTest.dll
+C:\Users\Julia1\Documents\GitHub\-------\Лаба1\AirMapTest\obj\Debug\AirMapTest.pdb
