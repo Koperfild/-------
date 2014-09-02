@@ -33,8 +33,8 @@ namespace Лаба1
         protected double[][] OptimalWays;//Для static понадобится public?
         protected double[][] IncidenceMatrix;
         private string[] PointsNames { get; set; }//пункты доставки. Хранятся первой строчкой в файле 
-        public static string ErrorReadFile = "Error reading file";
-        public static string TooBigValueInFile = "Too big read Value";
+        public const string ErrorReadFile = "Error reading file";
+        public const string TooBigValueInFile = "Too big read Value";
         /// <summary>
         /// Инициализирует новый экземпляр Лаба1.GraphMap с указанием пути граф-карты
         /// </summary>
@@ -57,7 +57,7 @@ namespace Лаба1
                 throw new OverflowException(GraphMap.TooBigValueInFile);
             }
         }
-        public static string InternalErrorFileReading = "Internal error reading file";
+        public const string InternalErrorFileReading = "Internal error reading file";
         /// <summary>
         /// Считывание граф-карты из файла
         /// </summary>
@@ -95,7 +95,7 @@ namespace Лаба1
                 }
             }
         }
-        public static string PointsDoesntCommunicate = "2 points doesn't communicate";
+        public const string PointsDoesntCommunicate = "2 points doesn't communicate";
         //True если можно добраться из пункта А в пункт Б и False иначе
         /// <summary>
         /// Проверяет есть ли наземное сообщение и возвращает Лаба1.GroundRace

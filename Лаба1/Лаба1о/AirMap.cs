@@ -42,7 +42,7 @@ namespace Лаба1
                 throw new Exception(ErrorReadingMapFromFile);
             }
         }
-        public static string ErrorReadingMapFromFile = "Error reading map from file";
+        public const string ErrorReadingMapFromFile = "Error reading map from file";//const всегда static
         /// <summary>
         /// Считывает воздушную карту из файла
         /// </summary>
@@ -70,7 +70,7 @@ namespace Лаба1
                 }
             }
         }
-        public static string AirportsDoesntCommunicate = "Airports are not connected";
+        public const string AirportsDoesntCommunicate = "Airports are not connected";
         /// <summary>
         /// Проверяет есть ли авиасообщение между 2-мя пунктами и в случае успеха возвращает Лаба1.AirRace
         /// </summary>
@@ -86,6 +86,9 @@ namespace Лаба1
                 return string.Compare(pt.Name, from) == 0;
             }
             );
+            /*Лямбда выражение. Можно использовать вместо анонимного делегата
+            Airport pt1 = Points.Find(pt => string.Compare(pt.Name, from) == 0);
+            */
             AirPort pt2 = Points.Find(
             delegate(AirPort pt)
             {
@@ -105,7 +108,7 @@ namespace Лаба1
         /// <param name="from">Откуда</param>
         /// <param name="to">Куда</param>
         /// <returns>true если да, false иначе</returns>
-        public override bool Communicate(string from, string to)//Сделать простой communicate без runway. Предполагается уже нормальная карта
+        public override bool Communicate(string from, string to)
         {
             try
             {
