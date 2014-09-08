@@ -4,8 +4,8 @@ using Лаба1;
 
 namespace Test
 {
-    [TestClass]
-    public class Test_Communicate
+    
+    public partial class Test_GraphMap
     {
         [TestMethod]
         public void Communicate_True()

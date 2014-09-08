@@ -16,3 +16,12 @@ C:\Users\Julia1\Documents\GitHub\-------\Лаба1\Лаба1о\obj\Debug\Лаб�
 C:\Users\Julia1\Documents\GitHub\-------\Лаба1\Лаба1о\obj\Debug\Лаба1.csproj.GenerateResource.Cache
 C:\Users\Julia1\Documents\GitHub\-------\Лаба1\Лаба1о\bin\Debug\Лаба1о.exe
 C:\Users\Julia1\Documents\GitHub\-------\Лаба1\Лаба1о\bin\Debug\Лаба1о.pdb
+C:\Users\Женя\Documents\GitHub\-------\Лаба1\Лаба1о\bin\Debug\Лаба1о.exe.config
+C:\Users\Женя\Documents\GitHub\-------\Лаба1\Лаба1о\obj\Debug\Лаба1о.exe
+C:\Users\Женя\Documents\GitHub\-------\Лаба1\Лаба1о\obj\Debug\Лаба1о.pdb
+C:\Users\Женя\Documents\GitHub\-------\Лаба1\Лаба1о\bin\Debug\Лаба1о.exe
+C:\Users\Женя\Documents\GitHub\-------\Лаба1\Лаба1о\bin\Debug\Лаба1о.pdb
+C:\Users\Женя\Documents\GitHub\-------\Лаба1\Лаба1о\obj\Debug\Лаба1.csprojResolveAssemblyReference.cache
+C:\Users\Женя\Documents\GitHub\-------\Лаба1\Лаба1о\obj\Debug\Лаба1.Form1.resources
+C:\Users\Женя\Documents\GitHub\-------\Лаба1\Лаба1о\obj\Debug\Лаба1.Properties.Resources.resources
+C:\Users\Женя\Documents\GitHub\-------\Лаба1\Лаба1о\obj\Debug\Лаба1.csproj.GenerateResource.Cache

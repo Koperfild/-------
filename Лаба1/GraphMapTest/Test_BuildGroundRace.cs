@@ -5,21 +5,41 @@ using Лаба1;
 namespace Test
 {
     [TestClass]
-    public class Test_BuildGroundRace
+    public partial class Test_GraphMap
     {
         [TestMethod]
-        public void BuildAirRace_Failed()
+        public void BuildGroundRace_Failed()
         {
             GraphMap map = new GraphMap(FilesDirectories.getFilePath(FilesDirectories.Лаба1оDirectory, FilesDirectories.GraphMap));
             var privateObject = new PrivateObject(map);
             try
             {
                 privateObject.Invoke("BuildGroundRace", "Токио", "Непал");
+                //Assert.Fail(GraphMap.PointsDoesntCommunicate); //Можно так вместо StringAssert
             }
             catch (Exception e)
             {
                 StringAssert.Contains(e.Message, GraphMap.PointsDoesntCommunicate);
-            }        
+                return;
+            }
+            Assert.Fail("Exception is supposed to be thrown");
+        }
+        [TestMethod]
+        public void BuildGroundRace_Failed2()
+        {
+            GraphMap map = new GraphMap(FilesDirectories.getFilePath(FilesDirectories.Лаба1оDirectory, FilesDirectories.GraphMap));
+            var privateObject = new PrivateObject(map);
+            try
+            {
+                privateObject.Invoke("BuildGroundRace", "Москва", "Непал");
+                //Assert.Fail(GraphMap.PointsDoesntCommunicate); //Можно так вместо StringAssert
+            }
+            catch (Exception e)
+            {
+                StringAssert.Contains(e.Message, GraphMap.PointsDoesntCommunicate);
+                return;
+            }
+            Assert.Fail("Exception is supposed to be thrown");
         }
         
         [TestMethod]
@@ -33,12 +53,9 @@ namespace Test
             }
             catch (Exception e)
             {
-                if (e.Message == GraphMap.PointsDoesntCommunicate)
-                {
-                    Assert.Fail(GraphMap.PointsDoesntCommunicate);
-                }
+                Assert.Fail("No exception is supposed to be thrown");
             }
-        }
+        }        
     }
 }
 

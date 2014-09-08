@@ -4,13 +4,28 @@ using Лаба1;
 
 namespace AirMapTest
 {
-    [TestClass]
-    public class Test_Distance
+    
+    public partial class Test_AirMap
     {
         [TestMethod]
-        public void TestFalse()
+        public void Distance_Fail()//Токио нет на карте. 
         {
             AirMap map = new AirMap(FilesDirectories.getFilePath(FilesDirectories.Лаба1оDirectory,FilesDirectories.AirMap));
+            try
+            {
+                map.Distance("Мали", "Токио");
+            }
+            catch (Exception e)
+            {
+                StringAssert.Contains(e.Message, AirMap.AirportsDoesntCommunicate);
+                return;
+            }
+            Assert.Fail(AirMap.AirportsDoesntCommunicate);
+        }
+        [TestMethod]
+        public void Distance_Fail2()//Токио нет на карте. 
+        {
+            AirMap map = new AirMap(FilesDirectories.getFilePath(FilesDirectories.Лаба1оDirectory, FilesDirectories.AirMap));
             try
             {
                 map.Distance("Москва", "Токио");
@@ -23,7 +38,7 @@ namespace AirMapTest
             Assert.Fail(AirMap.AirportsDoesntCommunicate);
         }
         [TestMethod]
-        public void TestTrue()
+        public void Distance_Successful()
         {
             AirMap map = new AirMap(FilesDirectories.getFilePath(FilesDirectories.Лаба1оDirectory,FilesDirectories.AirMap));
             try
@@ -32,9 +47,8 @@ namespace AirMapTest
             }
             catch (Exception e)
             {
-                Assert.IsFalse(e.Message == AirMap.AirportsDoesntCommunicate);
+                Assert.Fail("Error");
             }
-            //Assert.Fail(AirMap.AirportsDoesntCommunicate);
         }
     }
 }

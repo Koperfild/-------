@@ -12,3 +12,10 @@ C:\Users\Julia1\Documents\GitHub\-------\Лаба1\GraphMapTest\bin\Debug\Лаб
 C:\Users\Julia1\Documents\GitHub\-------\Лаба1\GraphMapTest\obj\Debug\GraphMapTest.csprojResolveAssemblyReference.cache
 C:\Users\Julia1\Documents\GitHub\-------\Лаба1\GraphMapTest\obj\Debug\GraphMapTest.dll
 C:\Users\Julia1\Documents\GitHub\-------\Лаба1\GraphMapTest\obj\Debug\GraphMapTest.pdb
+C:\Users\Женя\Documents\GitHub\-------\Лаба1\GraphMapTest\bin\Debug\GraphMapTest.dll
+C:\Users\Женя\Documents\GitHub\-------\Лаба1\GraphMapTest\bin\Debug\GraphMapTest.pdb
+C:\Users\Женя\Documents\GitHub\-------\Лаба1\GraphMapTest\bin\Debug\Лаба1о.exe
+C:\Users\Женя\Documents\GitHub\-------\Лаба1\GraphMapTest\bin\Debug\Лаба1о.pdb
+C:\Users\Женя\Documents\GitHub\-------\Лаба1\GraphMapTest\obj\Debug\GraphMapTest.csprojResolveAssemblyReference.cache
+C:\Users\Женя\Documents\GitHub\-------\Лаба1\GraphMapTest\obj\Debug\GraphMapTest.dll
+C:\Users\Женя\Documents\GitHub\-------\Лаба1\GraphMapTest\obj\Debug\GraphMapTest.pdb

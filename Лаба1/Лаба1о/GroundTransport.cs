@@ -21,7 +21,7 @@ namespace Лаба1
             }
             catch (Exception)
             {
-                throw new Exception("Eror reading oil prices from file");
+                throw new Exception("Error reading oil prices from file");
             }
             fuelprice = OilPrices.getPrice("Уголь");
         }
