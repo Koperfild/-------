@@ -36,10 +36,10 @@
             this.fromLabel = new System.Windows.Forms.Label();
             this.toLabel = new System.Windows.Forms.Label();
             this.PriceDGW = new System.Windows.Forms.DataGridView();
-            this.executeButton = new System.Windows.Forms.Button();
             this.AirTransport = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GroundTransport = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.WaterTransport = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.executeButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.citiesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.citiesBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PriceDGW)).BeginInit();
@@ -49,9 +49,10 @@
             // 
             this.comboBox1.DataSource = this.citiesBindingSource;
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(65, 73);
+            this.comboBox1.Location = new System.Drawing.Point(49, 59);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 24);
+            this.comboBox1.Size = new System.Drawing.Size(92, 21);
             this.comboBox1.TabIndex = 0;
             // 
             // citiesBindingSource
@@ -62,9 +63,10 @@
             // 
             this.comboBox2.DataSource = this.citiesBindingSource1;
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(219, 73);
+            this.comboBox2.Location = new System.Drawing.Point(164, 59);
+            this.comboBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 24);
+            this.comboBox2.Size = new System.Drawing.Size(92, 21);
             this.comboBox2.TabIndex = 1;
             // 
             // citiesBindingSource1
@@ -74,18 +76,20 @@
             // fromLabel
             // 
             this.fromLabel.AutoSize = true;
-            this.fromLabel.Location = new System.Drawing.Point(109, 30);
+            this.fromLabel.Location = new System.Drawing.Point(82, 24);
+            this.fromLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.fromLabel.Name = "fromLabel";
-            this.fromLabel.Size = new System.Drawing.Size(36, 17);
+            this.fromLabel.Size = new System.Drawing.Size(27, 13);
             this.fromLabel.TabIndex = 2;
             this.fromLabel.Text = "from";
             // 
             // toLabel
             // 
             this.toLabel.AutoSize = true;
-            this.toLabel.Location = new System.Drawing.Point(216, 30);
+            this.toLabel.Location = new System.Drawing.Point(162, 24);
+            this.toLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.toLabel.Name = "toLabel";
-            this.toLabel.Size = new System.Drawing.Size(20, 17);
+            this.toLabel.Size = new System.Drawing.Size(16, 13);
             this.toLabel.TabIndex = 3;
             this.toLabel.Text = "to";
             // 
@@ -96,22 +100,13 @@
             this.AirTransport,
             this.GroundTransport,
             this.WaterTransport});
-            this.PriceDGW.Location = new System.Drawing.Point(65, 163);
+            this.PriceDGW.Location = new System.Drawing.Point(49, 132);
+            this.PriceDGW.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.PriceDGW.Name = "PriceDGW";
             this.PriceDGW.RowTemplate.Height = 24;
             this.PriceDGW.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.PriceDGW.Size = new System.Drawing.Size(587, 119);
+            this.PriceDGW.Size = new System.Drawing.Size(440, 97);
             this.PriceDGW.TabIndex = 4;
-            // 
-            // executeButton
-            // 
-            this.executeButton.Location = new System.Drawing.Point(161, 117);
-            this.executeButton.Name = "executeButton";
-            this.executeButton.Size = new System.Drawing.Size(85, 23);
-            this.executeButton.TabIndex = 5;
-            this.executeButton.Text = "Calculate";
-            this.executeButton.UseVisualStyleBackColor = true;
-            this.executeButton.Click += new System.EventHandler(this.executeButton_Click);
             // 
             // AirTransport
             // 
@@ -134,19 +129,31 @@
             this.WaterTransport.ReadOnly = true;
             this.WaterTransport.Width = 133;
             // 
+            // executeButton
+            // 
+            this.executeButton.Location = new System.Drawing.Point(121, 95);
+            this.executeButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.executeButton.Name = "executeButton";
+            this.executeButton.Size = new System.Drawing.Size(64, 19);
+            this.executeButton.TabIndex = 5;
+            this.executeButton.Text = "Calculate";
+            this.executeButton.UseVisualStyleBackColor = true;
+            this.executeButton.Click += new System.EventHandler(this.executeButton_Click);
+            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(683, 389);
+            this.ClientSize = new System.Drawing.Size(512, 316);
             this.Controls.Add(this.executeButton);
             this.Controls.Add(this.PriceDGW);
             this.Controls.Add(this.toLabel);
             this.Controls.Add(this.fromLabel);
             this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.comboBox1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Distance Counter";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.citiesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.citiesBindingSource1)).EndInit();
